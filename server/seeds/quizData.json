@@ -1,0 +1,134 @@
+[
+    {
+        "id": 1, 
+        "question": "Inside which HTML element do we put the JavaScript?",
+        "description": "JS element",
+        "answers": {
+            "answer_a": "<js>",
+            "answer_b": "<script>",
+            "answer_c": "<scripts-js>",
+            "answer_d": "<JavaScript>"
+        },
+            "multiple_correct_answers": false,
+            "correct_answers": {
+                "answer_a_correct": "false",
+                "answer_b_correct": "true",
+                "answer_c_correct": "false",
+                "answer_d_correct": "false"
+            },
+        "explanation": "",
+        "tip": "null",
+        "category": "JavaScript",
+        "difficulty": "Easy"
+    },
+    {
+        "id": 2, 
+        "question": "Where is the correct place to insert a JavaScript?",
+        "description": "JS placement",
+        "answers": {
+            "answer_a": "The <head> section",
+            "answer_b": "The <body> section",
+            "answer_c": "The <main> section",
+            "answer_d": "Both <head> and <main> section"
+        },
+            "multiple_correct_answers": false,
+            "correct_answers": {
+                "answer_a_correct": "true",
+                "answer_b_correct": "false",
+                "answer_c_correct": "false",
+                "answer_d_correct": "false"
+            },
+        "explanation": "",
+        "tip": "null",
+        "category": "JavaScript",
+        "difficulty": "Easy"
+    },
+    {
+        "id": 3, 
+        "question": "How do you create a function in JavaScript?",
+        "description": "JS function",
+        "answers": {
+            "answer_a": "functions functionName()",
+            "answer_b": "function:functionName()",
+            "answer_c": "function => functionName()",
+            "answer_d": "function functionName()"
+        },
+            "multiple_correct_answers": false,
+            "correct_answers": {
+                "answer_a_correct": "false",
+                "answer_b_correct": "false",
+                "answer_c_correct": "false",
+                "answer_d_correct": "true"
+            },
+        "explanation": "",
+        "tip": "null",
+        "category": "JavaScript",
+        "difficulty": "Easy"
+    },
+    {
+        "id": 4, 
+        "question": "How do you insert COMMENTS in Python code?",
+        "description": "Python comments",
+        "answers": {
+            "answer_a": "#Your comment here",
+            "answer_b": "//Your comment here",
+            "answer_c": "**Your comment here",
+            "answer_d": "/*Your comment here*/"
+        },
+            "multiple_correct_answers": false,
+            "correct_answers": {
+                "answer_a_correct": "true",
+                "answer_b_correct": "false",
+                "answer_c_correct": "false",
+                "answer_d_correct": "false"
+            },
+        "explanation": "",
+        "tip": "null",
+        "category": "Python",
+        "difficulty": "Easy"
+    },
+    {
+        "id": 5, 
+        "question": "Which one is NOT a legal variable name?",
+        "description": "Python variable name",
+        "answers": {
+            "answer_a": "Myvar",
+            "answer_b": "my-var",
+            "answer_c": "_myvar",
+            "answer_d": "my_var"
+        },
+            "multiple_correct_answers": false,
+            "correct_answers": {
+                "answer_a_correct": "false",
+                "answer_b_correct": "true",
+                "answer_c_correct": "false",
+                "answer_d_correct": "false"
+            },
+        "explanation": "",
+        "tip": "null",
+        "category": "Python",
+        "difficulty": "Easy"
+    },
+    {
+        "id": 6, 
+        "question": "What is a correct syntax to return the first character in a string?",
+        "description": "Python syntax",
+        "answers": {
+            "answer_a": "x = \"Hello\"[0]",
+            "answer_b": "x = \"Hello\".sub(0, 1)",
+            "answer_c": "x = \"Hello(0)\"",
+            "answer_d": "x = sub(\"Hello\", 0, 1)"
+        },
+            "multiple_correct_answers": false,
+            "correct_answers": {
+                "answer_a_correct": "true",
+                "answer_b_correct": "false",
+                "answer_c_correct": "false",
+                "answer_d_correct": "true"
+            },
+        "explanation": "",
+        "tip": "null",
+        "category": "Python",
+        "difficulty": "Easy"
+    }
+  ]
