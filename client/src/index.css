@@ -1,15 +1,31 @@
-body {
-  font-family: 'Montserrat', sans-serif;
+:root {
+  --max-width: 1350px;
+  --background: #ebd6ad;
+  --font: #cc333c;
+  
 }
 
-h1 {
+* {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--background);
+}
+
+h2 {
   font-family: 'Work Sans', sans-serif;
   font-size: 5rem;
+  color: var(--font);
   text-align: center;
   padding: 1.5rem;
 }
 
-h2,
 h3,
 h4,
 h5,
@@ -20,4 +36,26 @@ h6 {
 .small {
   font-weight: 300;
   font-style: italic;
+}
+
+
+
+/* Scrollbar width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+  background: var(--color-secondary);
+}
+
+/* Scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-black);
+}
+
+/* Scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
 }

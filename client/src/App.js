@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import Navbar from './components/Navbar';
+import Navbar from './components/NavBar/Navbar';
 import './index.css'
 
 // construct the main GraphQL API endpoint
@@ -34,6 +34,7 @@ function App() {
             <Router>
                 <>
                 <Navbar />
+                <h2>Hello</h2>
                 <Switch>
                   <Route />
                 </Switch>

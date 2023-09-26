@@ -1,0 +1,20 @@
+
+.NavBar {
+  border-bottom: solid;
+  background-color: transparent;
+  color: var(--font);
+  max-width: 90rem;
+  margin: auto;
+  padding-top: 1.5rem;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  /* font-size: 60px; */
+  color: var(--font);
+  margin: auto;
+}
+
+h3 {
+  color: var(--font)
+}
