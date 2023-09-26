@@ -1,0 +1,7 @@
+[
+    {
+        "question": "Inside which HTML element do we put the JavaScript?",
+        "answers": [ "<js>", "<script>", "<scripts-js>","<JavaScript>" ],
+        "correct_answer": 2
+    }
+]
