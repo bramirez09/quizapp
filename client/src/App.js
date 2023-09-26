@@ -4,7 +4,8 @@ import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@ap
 import { setContext } from '@apollo/client/link/context';
 
 import Navbar from './components/Navbar';
-import './index.css'
+import './index.css';
+import './App.css';
 
 // construct the main GraphQL API endpoint
 const httpLink = createHttpLink({

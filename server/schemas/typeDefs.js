@@ -8,29 +8,22 @@ type User {
     email: String!
 }
 type Quiz {
-    id: ID!
-    title: String!
-    questions: [Question!]!
-}
-type Question {
-    id: ID!
-    text: String!
-    answers: [Answer!]!
-    correctAnswer: Answer!
-}
-type Answer {
-    id: ID!
-    text: String!
-}
+    _id: ID!
+    question: String!
+    answers: [String]!
+    correct_answer: Int
+  }
 
 type Auth {
     token: ID!,
     user: User
 }
-
 type Query {
     me: User
+    quizzes: [Quiz]
+    quiz(ID: ID!): Quiz!
 }
 `;
+
 
 module.exports = typeDefs;
