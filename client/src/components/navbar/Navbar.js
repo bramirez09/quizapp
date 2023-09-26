@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container} from 'react-bootstrap';
-import '../../src/index.css'
+
 
 // import Auth from '../utils/auth';
 
-const AppNavbar = () => {
+const NavBar = () => {
     return (
       <>
         <Navbar bg='dark' variant='dark' expand='lg'>
@@ -28,4 +28,4 @@ const AppNavbar = () => {
     );
 };
 
-export default AppNavbar;
+export default NavBar;
