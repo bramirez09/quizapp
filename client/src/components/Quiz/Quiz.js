@@ -7,11 +7,14 @@ import { useQuery } from '@apollo/client';
 // const [showResults, setShowResults] = useState(false)
 
 function Quiz() {
-    // const { loading, data } = useQuery(QUERY_QUIZ);
+    const { loading, data } = useQuery(QUERY_QUIZ);
+    const quizzes = data?.quizzes || [];
+    console.log(quizzes.question)
     return (
-        
         <div className='quizCard'>
-            {/* {[data]} */}
+            {quizzes.question}
+            {quizzes.answers}
+            {quizzes.correct_answer}
             <div className='quiz'>
                 <h2>Quiz question</h2>
                 <ul className='quizChoices'>
