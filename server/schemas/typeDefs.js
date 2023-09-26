@@ -10,7 +10,7 @@ type Quiz {
     _id: ID!
     question: String!
     answers: [String]!
-    correctAnswers: Int
+    correct_answer: Int
   }
 
 type Auth {

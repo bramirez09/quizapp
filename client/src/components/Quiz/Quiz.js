@@ -1,12 +1,17 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import "./Quiz.css";
+import { QUERY_QUIZ } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 // const [currentQuestion, setCurrentQuestion] = useState(0);
 // const { question, answers, correct_answers} = questions[currentQuestion]
 // const [showResults, setShowResults] = useState(false)
 
 function Quiz() {
+    // const { loading, data } = useQuery(QUERY_QUIZ);
     return (
+        
         <div className='quizCard'>
+            {/* {[data]} */}
             <div className='quiz'>
                 <h2>Quiz question</h2>
                 <ul className='quizChoices'>

@@ -11,7 +11,7 @@ const quizSchema = new Schema({
       trim: true,
     },
   ],
-  correctAnswers: {
+  correct_answer: {
       type: Number 
   },
 });
