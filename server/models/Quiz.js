@@ -18,4 +18,10 @@ const quizSchema = new Schema({
 
 const Quiz = model('Quiz', quizSchema);
 
+<<<<<<< HEAD
 module.exports = Quiz;
+=======
+// module.exports = Quiz;
+ 
+export default Quiz
+>>>>>>> origin/Brenda
