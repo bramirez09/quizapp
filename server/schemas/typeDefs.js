@@ -1,10 +1,6 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Brenda
 type User {
     _id: ID!
     username: String!
@@ -28,8 +24,4 @@ type Query {
 }
 `;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Brenda
 module.exports = typeDefs;

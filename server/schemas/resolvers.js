@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Brenda
 const Quiz = require('../models/Quiz');
 
 const resolvers = {
@@ -15,9 +11,5 @@ const resolvers = {
 
     },
   };
-<<<<<<< HEAD
-  module.exports = resolvers;
-=======
 
 module.exports = resolvers;
->>>>>>> origin/Brenda
