@@ -21,7 +21,7 @@ const SignupForm = () => {
     } else {
       setShowAlert(false);
     }
-  }, [error]);
+  }, [error]);   
 
 
   const handleInputChange = (event) => {
@@ -36,7 +36,7 @@ const SignupForm = () => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
-      event.stopProagation();
+      event.stopPropagation();
     }
 
     try {
@@ -114,4 +114,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm
+export default SignupForm;
