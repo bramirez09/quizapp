@@ -1,13 +1,18 @@
 .quizCard {
     display: flex;
     justify-content: center;
+    width: auto;
 }
 
 .quiz {
     height: 100px;
-    width: 100px;
+    width: auto;
 }
 
 .quizChoices {
     list-style: none;
+}
+
+.selected {
+    color: blue;
 }
