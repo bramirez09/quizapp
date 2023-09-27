@@ -1,3 +1,12 @@
+.modal-header {
+  background-color: var(--background);
+  border: none;
+}
+
+.modal-body {
+  background-color: var(--background);
+}
+
 
 .NavBar {
   border-bottom: solid;
@@ -6,6 +15,23 @@
   max-width: 90rem;
   margin: auto;
   padding-top: 1.5rem;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  color: var(--background);
+    background-color: var(--font);
+}
+
+a {
+  color: var(--font)
+}
+
+a:hover{
+  color: black;
+}
+
+.btn-success.disabled, .btn-success:disabled {
+  color: var(--background);
 }
 
 h1 {

@@ -25,6 +25,22 @@ const resolvers = {
 
       return { token, user };
     },
+
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+      // check if user exists with email and credentials
+      if (!user) {
+          throw new AuthenticationError("User not found");
+      }
+      const correctPassword = await user.isCorrectPassword(password);
+
+      // check password
+      if (!correctPassword) {
+          throw new AuthenticationError("Incorrect credentials");
+      }
+      const token = signToken(user);
+      return { token, user };
+    },
     
 
   },
