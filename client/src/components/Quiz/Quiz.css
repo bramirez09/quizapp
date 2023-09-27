@@ -1,0 +1,13 @@
+.quizCard {
+    display: flex;
+    justify-content: center;
+}
+
+.quiz {
+    height: 100px;
+    width: 100px;
+}
+
+.quizChoices {
+    list-style: none;
+}
