@@ -1,15 +1,12 @@
 const express = require('express');
 const path = require('path');
 
+// import typeDefs and Resolvers
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connections');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-
-
-// import typeDefs and Resolvers
-const { typeDefs } = require('./schemas');
 
 
 // add express middleward

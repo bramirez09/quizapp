@@ -96,7 +96,7 @@ const Quiz = () => {
             {Auth.loggedIn()?(
 
   
-             <div >
+            <div >
                 <div className='quiz'>
                     <div className='numbers'>
                         <span className='questionNum'>{currentQuestion + 1}</span>/
