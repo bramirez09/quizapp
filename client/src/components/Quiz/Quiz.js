@@ -1,7 +1,7 @@
-import { React } from 'react';
-import "./Quiz.css";
-import { QUERY_QUIZ } from '../../utils/queries';
-import { useQuery } from '@apollo/client';
+// import { React } from 'react';
+// import "./Quiz.css";
+// import { QUERY_QUIZ } from '../../utils/queries';
+// import { useQuery } from '@apollo/client';
 // const [currentQuestion, setCurrentQuestion] = useState(0);
 // const { question, answers, correct_answers} = questions[currentQuestion]
 // const [showResults, setShowResults] = useState(false)
@@ -35,10 +35,12 @@ import { React, useState } from 'react';
 import "./Quiz.css";
 import { QUERY_QUIZ } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
+import Auth from '../../utils/auth';
 
 const Quiz = () => {
     const { loading, data, error } = useQuery(QUERY_QUIZ);
     const quizzes = data?.quizzes || [];
+    console.log(data)
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -53,6 +55,7 @@ const Quiz = () => {
     }
 
     const quiz = quizzes[currentQuestion];
+    console.log(quiz)
 
     const handleNextQuestion = () => {
         setCurrentQuestion(currentQuestion + 1);
@@ -90,21 +93,24 @@ const Quiz = () => {
 
     return (
         <div className='quizCard'>
-            <div >
+            {Auth.loggedIn()?(
+
+  
+             <div >
                 <div className='quiz'>
                     <div className='numbers'>
                         <span className='questionNum'>{currentQuestion + 1}</span>/
                         <span className='totalNum'>{quizzes.length}</span>
                     </div>
-                    <h3>{quiz.question}</h3>
-                    <ul className='quizChoices'>
+                    {/* <h3>{quiz.question}</h3> */}
+                    {/* <ul className='quizChoices'>
                         {quiz.answers.map((answer, answerIndex) => (
                             <li key={answerIndex} className={`quizChoice ${selectedAnswer === answerIndex ? 'selected' : ''}`}
                                 onClick={() => handleAnswerSelection(answerIndex)}>
                                 {answer}
                             </li>
                         ))}
-                    </ul>
+                    </ul> */}
                     <div className='btn'>
                         {currentQuestion < quizzes.length - 1 ? (
                         <button onClick={handleNextQuestion}>Next</button>
@@ -113,7 +119,9 @@ const Quiz = () => {
                         )}
                     </div>
                 </div>
-            </div>
+            </div> 
+            ): (<h1>abcdef</h1>)
+        }
         </div>
     );
 };

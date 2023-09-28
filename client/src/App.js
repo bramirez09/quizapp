@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// import  { Quiz } from './components/quiz/Quiz';
+import Quiz from './components/Quiz/Quiz';
 
 import NavBar from './components/navbar/Navbar'
 import './index.css';
@@ -36,9 +36,7 @@ function App() {
         <Router>
             <NavBar />
             <h2>Hello</h2>
-            {/* <Switch>
-              <Route />
-            </Switch> */}
+            <Quiz />
         </Router>
     </ApolloProvider>
 );
