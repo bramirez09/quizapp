@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 // import  { Quiz } from './components/quiz/Quiz';
 
 import NavBar from './components/navbar/Navbar'
 import './index.css';
-import './App.css';
+// import './App.css';
 
 // construct the main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -33,12 +33,15 @@ const client = new ApolloClient({
 function App() {
     return (
         <ApolloProvider client={client}>
-            <Router>
-                <NavBar />
-                {/* <Quiz /> */}
-            </Router>
-        </ApolloProvider>
-    );
+        <Router>
+            <NavBar />
+            <h2>Hello</h2>
+            {/* <Switch>
+              <Route />
+            </Switch> */}
+        </Router>
+    </ApolloProvider>
+);
 }
 
 export default App;

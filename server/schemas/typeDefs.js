@@ -22,6 +22,10 @@ type Query {
     quizzes: [Quiz]
     quiz(ID: ID!): Quiz!
 }
+type Mutation { 
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+  }
 `;
 
 module.exports = typeDefs;
