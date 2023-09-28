@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// import  { Quiz } from './components/quiz/Quiz';
+import Quiz from '../src/components/Quiz/Quiz';
 
 import NavBar from './components/navbar/Navbar'
 import './index.css';
@@ -35,7 +35,7 @@ function App() {
         <ApolloProvider client={client}>
             <Router>
                 <NavBar />
-                {/* <Quiz /> */}
+                <Quiz />
             </Router>
         </ApolloProvider>
     );
