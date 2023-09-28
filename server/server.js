@@ -1,16 +1,16 @@
 const express = require('express');
 const path = require('path');
+
+const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connections');
 
-// import ApooloServer
-const { ApolloServer } = require('apollo-server-express');
-const { authMiddleware } = require('./utils/auth');
+const PORT = process.env.PORT || 3001;
+const app = express();
+
 
 // import typeDefs and Resolvers
 const { typeDefs } = require('./schemas');
 
-const app = express();
-const PORT = process.env.PORT || 3001;
 
 // add express middleward
 app.use(express.urlencoded({ extended: false }));
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 const server = new ApolloServer({
   typeDefs,
-  // resolvers,
+  resolvers,
   context: authMiddleware,
 });
 

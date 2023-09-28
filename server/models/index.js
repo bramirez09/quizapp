@@ -1,4 +1,6 @@
-//  Load database models
-const User = require('./User');
+// const User = require('./User');
+const Quiz = require('./Quiz');
+const User = require('./User')
 
-module.exports = { User };
+//add User after export
+module.exports = { Quiz, User };

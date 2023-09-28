@@ -18,8 +18,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    // set savedBooks to be an array of data that adheres to the bookSchema
-    // savedBooks: [bookSchema],
   },
   // set this to use virtual below
   {
@@ -38,6 +36,9 @@ userSchema.pre('save', async function (next) {
 
   next();
 });
+userSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
 
 const User = model('User', userSchema);
 
