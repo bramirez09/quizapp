@@ -1,3 +1,4 @@
+
 // import { React } from 'react';
 // import "./Quiz.css";
 // import { QUERY_QUIZ } from '../../utils/queries';
@@ -42,6 +43,7 @@ const Quiz = () => {
     const quizzes = data?.quizzes || [];
     console.log(data)
 
+
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
 
@@ -55,11 +57,14 @@ const Quiz = () => {
     }
 
     const quiz = quizzes[currentQuestion];
+
     console.log(quiz)
+
 
     const handleNextQuestion = () => {
         setCurrentQuestion(currentQuestion + 1);
         setSelectedAnswer(null);
+
         if (currentQuestion === quizzes.length -1) {
             <div className='results'>
                     <div>
@@ -122,9 +127,11 @@ const Quiz = () => {
             </div> 
             ): (<h1>abcdef</h1>)
         }
-        </div>
-    );
-};
+            </div> 
+  );
+    };
+
 
 
 export default Quiz;
+
