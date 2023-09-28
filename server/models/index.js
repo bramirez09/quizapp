@@ -1,9 +1,6 @@
 // const User = require('./User');
 const Quiz = require('./Quiz');
+const User = require('./User')
 
 //add User after export
-<<<<<<< HEAD
-module.exports = { Quiz };
-=======
-module.exports = { Quiz };
->>>>>>> origin/Brenda
+module.exports = { Quiz, User };
