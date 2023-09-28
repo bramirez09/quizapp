@@ -32,8 +32,12 @@ const Quiz = () => {
     
     return (
        <div className='quizCard'>
-        <div className='quiz'>
-            <div>
+        <div >
+            <div className='quiz'>
+                <div className='numbers'>
+                    <span className='questionNum'>{currentQuestion + 1}</span>/
+                    <span className='totalNum'>{quizzes.length}</span>
+                </div>
                 <h3>{quiz.question}</h3>
                 <ul className='quizChoices'>
                     {quiz.answers.map((answer, answerIndex) => (
@@ -43,7 +47,9 @@ const Quiz = () => {
                         </li>
                     ))}
                 </ul>
+                <div className='btn'>
                 {currentQuestion < quizzes.length - 1 && (<button onClick={handleNextQuestion}>Next</button>)}
+                </div>
             </div>
         </div>
         <div className='results'>
