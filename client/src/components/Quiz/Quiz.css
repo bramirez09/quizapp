@@ -1,13 +1,48 @@
 .quizCard {
     display: flex;
     justify-content: center;
+    margin: 0 auto;
+    width: auto;
+    padding: 0 30px;
+    height: 100vh;
 }
 
 .quiz {
     height: 100px;
-    width: 100px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
 }
 
-.quizChoices {
+ul {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+li {
+    text-decoration: none;
     list-style: none;
+    color: black;
+    font-size: 16px;
+    background: white;
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.selected {
+    color: rgb(0, 0, 0);
+    background: var(--accent);
+}
+
+.btn {
+    text-align: center;
+}
+
+button {
+    border-radius: 8px;
+    background-color: var(--font);
+    padding: 5px 5px;
 }
