@@ -10,7 +10,8 @@ const Quiz = () => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [isQuizComplete, setIsQuizComplete] = useState(false);
-
+    const [answer, setAnswer] = useState(null);
+    const [result, setResult] = useState(0);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -21,14 +22,30 @@ const Quiz = () => {
         return <p>Error fetching quiz data.</p>;
     }
 
-    const quiz = quizzes[currentQuestion];
+    const { question, answers, correct_answer } = quizzes[currentQuestion];
 
     const handleNextQuestion = () => {
         setCurrentQuestion(currentQuestion + 1);
         setSelectedAnswer(null);
+        setResult ((prev) => 
+            answer
+            ? {
+                ...prev,
+                score: prev.score + 1
+            } : {
+                ...prev,
+                score: prev.score + 0
+            }
+        );
+        console.log(answer);
     };
-    const handleAnswerSelection = (answerIndex) => {
+    const handleAnswerSelection = (answer, answerIndex) => {
         setSelectedAnswer(answerIndex);
+        if(answer === correct_answer){
+            setAnswer(true);
+        } else {
+            setAnswer(false);
+        }
     };
 
     const handleSubmit = (answerIndex) => {
@@ -47,11 +64,11 @@ const Quiz = () => {
                         <span className='questionNum'>{currentQuestion + 1}</span>/
                         <span className='totalNum'>{quizzes.length}</span>
                     </div>
-                    <h3>{quiz.question}</h3>
+                    <h3>{question}</h3>
                     <ul className='quizChoices'>
-                        {quiz.answers.map((answer, answerIndex) => (
+                        {answers.map((answer, answerIndex) => (
                             <li key={answerIndex} className={`quizChoice ${selectedAnswer === answerIndex ? 'selected' : ''}`}
-                                onClick={() => handleAnswerSelection(answerIndex)}>
+                                onClick={() => handleAnswerSelection(answer, answerIndex)}>
                                 {answer}
                             </li>
                         ))}
@@ -65,7 +82,10 @@ const Quiz = () => {
                     </div>
                     {isQuizComplete && (
                         <div className='results'>
-                            <h6>Great job finishing! See results below:</h6>
+                            <div>
+                                <p>Quiz is complete!</p>
+                                <p>Score:</p>
+                            </div>
                         </div>
                     )}
                 </div>
@@ -76,5 +96,3 @@ const Quiz = () => {
 
 
 export default Quiz;
-
-

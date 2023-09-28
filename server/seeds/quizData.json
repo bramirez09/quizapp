@@ -2,16 +2,16 @@
     {
         "question": "Inside which HTML element do we put the JavaScript?",
         "answers": [ "<js>", "<script>", "<scripts-js>","<JavaScript>" ],
-        "correct_answer": 2
+        "correct_answer": "<script>"
     },
     {
         "question": "Where is the correct place to insert a JavaScript?",
         "answers": [ "The <body> section", "The <head> section", "The <main> section","Both <head> and <body>" ],
-        "correct_answer": 2
+        "correct_answer": "Both <head> and <body>"
     },
     {
         "question": "How do you create a function in JavaScript?",
         "answers": [ "functions myFunction()", "function:myFunction()", "function = myFunction()","function myFunction()" ],
-        "correct_answer": 4
+        "correct_answer": "function myFunction()"
     }
 ]
