@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import NavBar from './components/navbar1/Navbar'
+import NavBar from './components/navbar/Navbar'
 import Profile from './components/Profile/Profile';
 import Quiz from './components/Quiz/Quiz';
 import Footer from './components/Footer/Footer'
