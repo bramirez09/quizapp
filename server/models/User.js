@@ -18,7 +18,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-
   },
   // set this to use virtual below
   {
