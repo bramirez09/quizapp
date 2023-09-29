@@ -2,8 +2,7 @@
   --max-width: 1350px;
   --background: #ebd6ad;
   --font: #cc333c;
-  --accent: #cb6a70;
-  
+ 
 }
 
 * {
@@ -38,6 +37,7 @@ h6 {
   font-weight: 300;
   font-style: italic;
 }
+
 
 /* Scrollbar width */
 ::-webkit-scrollbar {
