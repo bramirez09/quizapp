@@ -3,6 +3,7 @@ import { BrowserRouter as Router} from 'react-router-dom';
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Quiz from './components/Quiz/Quiz';
+import Footer from './components/Footer/Footer'
 
 import NavBar from './components/navbar/Navbar'
 import './index.css';
@@ -38,6 +39,7 @@ function App() {
             <h2>Hello</h2>
             <Quiz />
           </Router>
+          <Footer />
         </ApolloProvider>
 )};
 

@@ -34,8 +34,8 @@ const NavBar = () => {
 
               {/* Signup Modal */}
               {Auth.loggedIn() ? (
-                <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                  Logout
+                <button className="logoutButton" onClick={logout}>
+                  <h3>Logout</h3>
                 </button>
               ) : (
                 <Nav.Link onClick={() => setShowModal(true)}>
