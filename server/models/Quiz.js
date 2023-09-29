@@ -12,7 +12,7 @@ const quizSchema = new Schema({
     },
   ],
   correct_answer: {
-      type: Number 
+      type: String 
   },
 });
 

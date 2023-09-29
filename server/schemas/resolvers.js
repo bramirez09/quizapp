@@ -11,10 +11,6 @@ const resolvers = {
       quiz: async (parent, { quizId }) => {
         return Quiz.findOne({ _id: quizId });
       },
-
-    },
-    Query: {
-
       me: async (parent, args, context) => {
         // checksif users exists
         if (context.user) {
@@ -28,11 +24,9 @@ const resolvers = {
     },
   
     Mutation: {
-  
       addUser: async (parent, { username, email, password }) => {
         const user = await User.create({ username, email, password });
         const token = signToken(user);
-  
         return { token, user };
       },
   
@@ -54,7 +48,6 @@ const resolvers = {
       
   
     },
-  
   };
 
 module.exports = resolvers;
