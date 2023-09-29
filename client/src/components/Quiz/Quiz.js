@@ -14,6 +14,7 @@ const Quiz = () => {
     const [isQuizComplete, setIsQuizComplete] = useState(false);
     const [answer, setAnswer] = useState(null);
     const [result, setResult] = useState(0);
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -28,9 +29,14 @@ const Quiz = () => {
 
 
     const handleNextQuestion = () => {
+        
         if (currentQuestion === quizzes.length - 1) {
             setIsQuizComplete(true);
+            setInterval(()=>{
+                window.location.href = "/"
+            },5000)
             console.log("quiz is set to complete")
+            setIsButtonDisabled(true);
         }
         if (currentQuestion < quizzes.length - 1) {
             setCurrentQuestion(currentQuestion + 1)
@@ -72,7 +78,7 @@ const Quiz = () => {
                             {currentQuestion < quizzes.length - 1 ? (
                                 <button onClick={handleNextQuestion}>Next</button>
                             ) : (
-                                <button onClick={handleNextQuestion}>Submit</button>
+                                <button onClick={handleNextQuestion} disabled={isButtonDisabled}>See My Score</button>
                             )}
                         </div>
                         {isQuizComplete && (

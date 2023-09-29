@@ -1,6 +1,20 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+
+
+const scoreSchema = new Schema({
+  score: {
+    type: Number,
+    required: true,
+  },
+  // created_at: {
+  //   type: Date(),
+  //   required: true,
+  // },
+//   add categories here later
+});
+
 const userSchema = new Schema(
   {
     username: {
@@ -18,6 +32,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    savedScore: [scoreSchema],
   },
   // set this to use virtual below
   {
