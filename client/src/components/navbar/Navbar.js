@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
-
+import { Navbar, Nav, Container, Modal, Tab} from 'react-bootstrap';
 import '../../../src/index.css'
 import SignUpForm from './SignupForm';
-import './Navbar.css';
 import LoginForm from './LoginForm';
+
+import './NavBar.css';
 
 import Auth from '../../utils/auth';
 

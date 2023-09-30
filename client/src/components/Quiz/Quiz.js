@@ -14,6 +14,7 @@ const Quiz = () => {
     const [isQuizComplete, setIsQuizComplete] = useState(false);
     const [answer, setAnswer] = useState(null);
     const [result, setResult] = useState(0);
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -28,18 +29,21 @@ const Quiz = () => {
 
 
     const handleNextQuestion = () => {
-        setCurrentQuestion(currentQuestion + 1);
+        
+        if (currentQuestion === quizzes.length - 1) {
+            setIsQuizComplete(true);
+            setInterval(()=>{
+                window.location.href = "/"
+            },5000)
+            console.log("quiz is set to complete")
+            setIsButtonDisabled(true);
+        }
+        if (currentQuestion < quizzes.length - 1) {
+            setCurrentQuestion(currentQuestion + 1)
+        }
         setSelectedAnswer(null);
-        setResult((prev) =>
-            answer
-                ? {
-                    ...prev,
-                    score: prev.score + 1
-                } : {
-                    ...prev,
-                    score: prev.score + 0
-                }
-        );
+        setResult((answer ? result + 1 : result));
+        console.log("score:", result);
         console.log(answer);
     };
     const handleAnswerSelection = (answer, answerIndex) => {
@@ -51,13 +55,6 @@ const Quiz = () => {
         }
     };
 
-    const handleSubmit = (answerIndex) => {
-        setSelectedAnswer(answerIndex);
-        if (currentQuestion === quizzes.length - 1) {
-            setIsQuizComplete(true);
-        }
-    };
-
 
     return (
         <div className='quizCard'>
@@ -65,7 +62,7 @@ const Quiz = () => {
                 <div >
                     <div className='quiz'>
                         <div className='numbers'>
-                            <span className='questionNum'>{currentQuestion + 1}</span>/
+                            <span className='questionNum'>{currentQuestion + 1}</span> /
                             <span className='totalNum'>{quizzes.length}</span>
                         </div>
                         <h3>{question}</h3>
@@ -81,20 +78,20 @@ const Quiz = () => {
                             {currentQuestion < quizzes.length - 1 ? (
                                 <button onClick={handleNextQuestion}>Next</button>
                             ) : (
-                                <button onClick={handleSubmit}>Submit</button>
+                                <button onClick={handleNextQuestion} disabled={isButtonDisabled}>See My Score</button>
                             )}
                         </div>
                         {isQuizComplete && (
                             <div className='results'>
                                 <div>
                                     <p>Quiz is complete!</p>
-                                    <p>Score:</p>
+                                    <p>Score:{result}</p>
                                 </div>
                             </div>
                         )}
                     </div>
                 </div>
-            ) : (<h1>abcdef</h1>)
+            ) : (<h1>Please Login to take Quiz</h1>)
             }
         </div>
     );
