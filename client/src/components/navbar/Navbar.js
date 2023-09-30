@@ -27,16 +27,16 @@ const NavBar = () => {
           <Navbar.Collapse id='navbar'>
             <Nav className='ml-auto'>
 
-              {/* Search for quiz */}
-              <Nav.Link as={Link} to='/'>
-                <h3> Search for Quiz </h3>
-              </Nav.Link>
-
               {/* Signup Modal */}
               {Auth.loggedIn() ? (
+                <>
+                <Link className="btn btn-lg btn-info m-2" to="/me">
+                {Auth.getProfile().data.username}'s profile
+                </Link>
                 <button className="logoutButton" onClick={logout}>
                   <h3>Logout</h3>
                 </button>
+                </>
               ) : (
                 <Nav.Link onClick={() => setShowModal(true)}>
                   <h3>Login/Sign Up</h3>
