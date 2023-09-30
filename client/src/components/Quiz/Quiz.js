@@ -28,12 +28,12 @@ const Quiz = () => {
     const { question, answers, correct_answer } = quizzes[currentQuestion];
 
     const handleNextQuestion = () => {
-        
+
         if (currentQuestion === quizzes.length - 1) {
             setIsQuizComplete(true);
-            setInterval(()=>{
+            setInterval(() => {
                 window.location.href = "/"
-            },5000)
+            }, 5000)
             console.log("quiz is set to complete")
             setIsButtonDisabled(true);
         }
@@ -81,16 +81,25 @@ const Quiz = () => {
                             )}
                         </div>
                         {isQuizComplete && (
-                            <div className='results'>
-                                <div>
+                            <div className='result-section'>
+                                <div className='results'>
                                     <p>Quiz is complete!</p>
-                                    <p>Score:{result}</p>
+                                    <p>Score:  {result} / {quizzes.length}</p>
                                 </div>
                             </div>
                         )}
                     </div>
                 </div>
-            ) : (<h1>Please Login to take Quiz</h1>)
+            ) : (
+                <div className='homepageCard'>
+                    <div className='home-info'>
+                        <h1>Hello, Welcome to CodeMaster!</h1>
+                        <h5>Insert cute frog here</h5>
+                        <h4>CodeMaster is your go-to destination for quick and engaging quizzes
+                            on various coding languages. Whether you're a seasoned programmer looking to test your knowledge or a
+                            beginner eager to learn, our platform has something for everyone.</h4>
+                    </div>
+                </div>)
             }
         </div>
     );
