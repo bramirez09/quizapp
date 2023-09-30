@@ -38,9 +38,6 @@ const Quiz = () => {
         }
         // set to null to select a new answer for the new question
         setSelectedAnswer(null);
-        // 
-        // setResult((answer ? result + 1 : result));
-        console.log(answer);
     };
     const handleAnswerSelection = (answer, answerIndex) => {
         setSelectedAnswer(answerIndex);
@@ -89,17 +86,16 @@ const Quiz = () => {
                             <div className='results'>
                                 <div>
                                     <p>Quiz is complete!</p>
-                                    <p>Score:{result}</p>
+                                    <p>Score: {result} </p>
                                 </div>
                             </div>
                         )}
                     </div>
                 </div>
-            ) : (<h1>Please Login to take Quiz</h1>)
+            ) : (<h6>Please Login or Sign-Up to take Quiz</h6>)
             }
         </div>
     );
 };
-
 
 export default Quiz;
