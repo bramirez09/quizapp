@@ -14,6 +14,7 @@ const Quiz = () => {
     const [isQuizComplete, setIsQuizComplete] = useState(false);
     const [answer, setAnswer] = useState(null);
     const [result, setResult] = useState(0);
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -27,17 +28,22 @@ const Quiz = () => {
     const { question, answers, correct_answer } = quizzes[currentQuestion];
 
     const handleNextQuestion = () => {
-        // if index is equal to the last question then show compelete 
+        
         if (currentQuestion === quizzes.length - 1) {
             setIsQuizComplete(true);
+            setInterval(()=>{
+                window.location.href = "/"
+            },5000)
             console.log("quiz is set to complete")
+            setIsButtonDisabled(true);
         }
-        // if index is not the last question than go to next question
         if (currentQuestion < quizzes.length - 1) {
             setCurrentQuestion(currentQuestion + 1)
         }
-        // set to null to select a new answer for the new question
         setSelectedAnswer(null);
+        setResult((answer ? result + 1 : result));
+        console.log("score:", result);
+        console.log(answer);
     };
     const handleAnswerSelection = (answer, answerIndex) => {
         setSelectedAnswer(answerIndex);
@@ -46,14 +52,6 @@ const Quiz = () => {
         } else {
             setAnswer(false);
         }
-    };
-// add remove button once submitted once or switch button to Profile
-    const handleSubmit = () => {
-        if (answer) {
-            setResult(result + 1)
-        }
-        console.log("score:", result);
-        handleNextQuestion();
     };
 
 
@@ -77,22 +75,22 @@ const Quiz = () => {
                         </ul>
                         <div className='btn'>
                             {currentQuestion < quizzes.length - 1 ? (
-                                <button onClick={handleSubmit}>Next</button>
+                                <button onClick={handleNextQuestion}>Next</button>
                             ) : (
-                                <button onClick={handleSubmit}>Submit</button>
+                                <button onClick={handleNextQuestion} disabled={isButtonDisabled}>See My Score</button>
                             )}
                         </div>
                         {isQuizComplete && (
                             <div className='results'>
                                 <div>
                                     <p>Quiz is complete!</p>
-                                    <p>Score: {result} </p>
+                                    <p>Score:{result}</p>
                                 </div>
                             </div>
                         )}
                     </div>
                 </div>
-            ) : (<h6>Please Login or Sign-Up to take Quiz</h6>)
+            ) : (<h1>Please Login to take Quiz</h1>)
             }
         </div>
     );
