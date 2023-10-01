@@ -11,15 +11,14 @@ const resolvers = {
       quiz: async (parent, { quizId }) => {
         return Quiz.findOne({ _id: quizId });
       },
+      user: async (parent, { username }) => {
+        return User.findOne({ username: username });
+      },
       me: async (parent, args, context) => {
-        // checksif users exists
         if (context.user) {
-          const userData = await User.findOne({ _id: context.user.id })
-          .select('__v - password');
-  
-          return userData;
+          return User.findOne({ username: context.user.username })
         }
-        throw new AuthenticationError("Must be logged in!")
+        throw new AuthenticationError('You need to be logged in!');
       },
     },
   

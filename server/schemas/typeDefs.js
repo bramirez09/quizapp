@@ -21,6 +21,7 @@ type Query {
     me: User
     quizzes: [Quiz]
     quiz(ID: ID!): Quiz!
+    user(username: String!): User
 }
 type Mutation { 
     login(email: String!, password: String!): Auth
