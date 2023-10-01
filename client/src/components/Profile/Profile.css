@@ -1,0 +1,37 @@
+.Banner {
+  margin: auto;
+  align-items: center;
+  background: #B892FF;
+}
+
+.profileCard {
+  margin: 0 0 0 10rem; 
+}
+
+.card-body {
+  text-align: center;
+  padding: 1rem 0 0 0 
+}
+
+.list-group.list-group-flush {
+  margin: auto;
+  padding: 0;
+  align-items: center;
+  border-radius: 10% 30% 50% 70%;
+}
+
+.list-group-item {
+  background-color: #f6a192;
+  padding: 1rem 2rem 1rem 2rem 
+}
+
+.card-link {
+  text-align: center; 
+  padding: .5rem 0 .5rem 0 ;
+}
+
+
+.card-body {
+  padding: 1rem 5rem 1rem 5rem;
+}
+

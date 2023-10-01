@@ -39,7 +39,6 @@ function App() {
         <ApolloProvider client={client}>
           <Router>
             <NavBar />
-            <h2>Hello</h2>
             <Routes>
               <Route path='/' element={<Quiz />} />
               <Route path='/me' element={<Profile />} />

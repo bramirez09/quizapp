@@ -11,7 +11,7 @@ export const QUERY_QUIZ = gql`
   }
 `;
 
-export const QUERY_USER = gql `
+export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
       _id
@@ -19,7 +19,7 @@ export const QUERY_USER = gql `
       email
     }
   }
-`
+`;
 
 export const QUERY_ME = gql`
   query me {

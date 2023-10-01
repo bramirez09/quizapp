@@ -33,7 +33,7 @@ const Quiz = () => {
         if (currentQuestion === quizzes.length - 1) {
             setIsQuizComplete(true);
             setInterval(()=>{
-                window.location.href = "/"
+                window.location.href = "/me"
             },5000)
             console.log("quiz is set to complete")
             setIsButtonDisabled(true);
