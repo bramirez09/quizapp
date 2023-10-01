@@ -7,20 +7,23 @@ module.exports = {
   authMiddleware: function ({ req }) {
     let token = req.body.token || req.query.token || req.headers.authorization;
 
-    if (req.headers.authorization) {
-      token = token.split(' ').pop().trim();
-    }
+        // Check if the token is in the authorization header
+        if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
+          // Remove the "Bearer " prefix from the token
+          token = req.headers.authorization.split(" ")[1];
+        }
 
     if (!token) {
       return req;
     }
 
-    try {
-      const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      req.user = data;
-    } catch {
-      console.log('Invalid token');
-    }
+        // verify token and get user data out of it
+        try {
+            const { data } = jwt.verify(token, secret, { maxAge: expiration });
+            req.user = data;
+        } catch (error) {
+            console.log('Invalid token', error.message);
+        }
 
     return req;
   },

@@ -20,10 +20,9 @@ type Auth {
 }
 type Query {
     me: User
-    users: [User]
-    user(username: String!): User
     quizzes: [Quiz]
     quiz(ID: ID!): Quiz!
+    user(username: String!): User
 }
 type Mutation { 
     login(email: String!, password: String!): Auth

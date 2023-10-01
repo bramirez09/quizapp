@@ -42,9 +42,8 @@ function App() {
             <Routes>
               <Route path='/' element={<Quiz />} />
               <Route path='/me' element={<Profile />} />
-              <Route path="/profiles/:username" element={<Profile />}/>
+              <Route path="/user/:username" element={<Profile />}/>
             </Routes>
-
           </Router>
           <Footer />
         </ApolloProvider>
