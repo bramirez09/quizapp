@@ -1,7 +1,9 @@
-import React from 'react';
+import { React } from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { QUERY_QUIZ } from '../src/utils/queries';
+import { useQuery } from '@apollo/client';
 
 import NavBar from './components/navbar/Navbar'
 import Profile from './components/Profile/Profile';
@@ -35,16 +37,28 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const { loading, data, error } = useQuery(QUERY_QUIZ);
+  const quizzes = data?.quizzes || [];
+  console.log(data)
+
+  if (loading) {
+    return <p>Loading...</p>;
+}
+
+if (error) {
+    console.error("Error fetching quiz data:", error);
+    return <p>Error fetching quiz data.</p>;
+}
+
     return (
         <ApolloProvider client={client}>
           <Router>
             <NavBar />
             <Routes>
-              <Route path='/' element={<Quiz />} />
+              <Route path='/' element={<Quiz quizzes={quizzes}/>} />
               <Route path='/me' element={<Profile />} />
               <Route path="/profiles/:username" element={<Profile />}/>
             </Routes>
-
           </Router>
           <Footer />
         </ApolloProvider>

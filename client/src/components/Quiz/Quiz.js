@@ -1,13 +1,9 @@
 import { React, useState } from 'react';
 import "./Quiz.css";
-import { QUERY_QUIZ } from '../../utils/queries';
-import { useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
 
-const Quiz = () => {
-    const { loading, data, error } = useQuery(QUERY_QUIZ);
-    const quizzes = data?.quizzes || [];
-    console.log(data)
+const Quiz = ({quizzes}) => {
+    console.log(quizzes);
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -15,15 +11,6 @@ const Quiz = () => {
     const [answer, setAnswer] = useState(null);
     const [result, setResult] = useState(0);
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-
-    if (loading) {
-        return <p>Loading...</p>;
-    }
-
-    if (error) {
-        console.error("Error fetching quiz data:", error);
-        return <p>Error fetching quiz data.</p>;
-    }
 
     const { question, answers, correct_answer } = quizzes[currentQuestion];
 
@@ -84,7 +71,7 @@ const Quiz = () => {
                             <div className='result-section'>
                                 <div className='results'>
                                     <p>Quiz is complete!</p>
-                                    <p>Score:  {result} / {quizzes.length}</p>
+                                    <p> {result} / {quizzes.length}</p>
                                 </div>
                             </div>
                         )}

@@ -6,7 +6,7 @@ import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
-const Profile = () => {
+const Profile = (props) => {
   const { username: userParam } = useParams();
 
   console.log("userparam:", userParam);
@@ -29,7 +29,7 @@ const Profile = () => {
     return (
       <h4>
         You need to be logged in to see this. Use the navigation links above to
-        sign up or log in! 
+        sign up or log in! {props.result}
       </h4>
     );
   }
