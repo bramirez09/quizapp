@@ -43,7 +43,7 @@ const Profile = () => {
 
         <div className='row'>
           {/* PROFILE CARD / EXAMPLE SHELL */}
-          <div className='profileCard' style={{width: "18rem"}}>
+          <div className='profileCard col-sm-3' style={{width: "18rem"}}>
             <img className="profileIcon" src={require('../../assets/frog-hat.jpg')} alt="Card image cap" />
               <div className='card-body'>
                 <h3>{user.username ? `${user.username}` : 'your'} </h3>
@@ -58,7 +58,7 @@ const Profile = () => {
 
           <div className='column'>
 
-            <div className='col-sm-10'>
+            <div className='col-sm-12'>
               <div className='card'>
                 <div className='cardBody'>
                   <h5 className='card-title'>TAKE NEXT QUIZ</h5>

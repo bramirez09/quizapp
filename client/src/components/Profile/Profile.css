@@ -6,10 +6,11 @@
 .row {
   display: flex; 
   justify-content: center;
+  height: 100vh;
 }
 
 .profileCard {
-  margin: 0 0 0 10rem; 
+  margin: 0 0 0 0; 
 }
 
 .card-body {
@@ -49,7 +50,7 @@ a {
 }
 
 .card {
-  padding: 3rem 0 0 8rem;
+  padding: 3rem 0 0 0rem;
   border: none;
   background-color: transparent;
 }
