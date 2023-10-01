@@ -51,3 +51,13 @@
   
   
   }
+
+  .btn-info {
+    background-color: var(--font);
+    border: none;
+  }
+
+  .btn-info:hover {
+    background-color: #4F9D69;
+    border: none;
+  }
