@@ -1,9 +1,17 @@
 import { React, useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
 import "./Quiz.css";
+import { QUERY_QUIZ } from '../../utils/queries';
+import { UPDATE_SCORE } from '../../utils/mutations';
+import { QUERY_USER } from '../../utils/queries';
+import { QUERY_ME } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
 
-const Quiz = ({quizzes}) => {
-    console.log(quizzes);
+const Quiz = () => {
+    const { loading, data, error } = useQuery(QUERY_QUIZ);
+    const quizzes = data?.quizzes || [];
+    console.log(data)
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -12,15 +20,49 @@ const Quiz = ({quizzes}) => {
     const [result, setResult] = useState(0);
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        console.error("Error fetching quiz data:", error);
+        return <p>Error fetching quiz data.</p>;
+    }
+
+    const [updateScore] = useMutation(UPDATE_SCORE, {
+        update(cache, { data: { updateScore } }) {
+          try {
+            const { totalScore } = cache.readQuery({ query: QUERY_USER });
+    
+            cache.writeQuery({
+              query: QUERY_USER,
+              data: { user: [updateScore, ...totalScore] },
+            });
+          } catch (e) {
+            console.error(e);
+          }
+    
+          // update me object's cache
+          const { me } = cache.readQuery({ query: QUERY_ME });
+          cache.writeQuery({
+            query: QUERY_ME,
+            data: { me: { ...me, user: [...me.totalScore, updateScore] } },
+          });
+        },
+      });
+    
+
+
     const { question, answers, correct_answer } = quizzes[currentQuestion];
 
-    const handleNextQuestion = () => {
 
+    const handleNextQuestion = () => {
+        
         if (currentQuestion === quizzes.length - 1) {
             setIsQuizComplete(true);
-            setInterval(() => {
-                window.location.href = "/"
-            }, 5000)
+            setInterval(()=>{
+                window.location.href = "/me"
+            },5000)
             console.log("quiz is set to complete")
             setIsButtonDisabled(true);
         }
@@ -40,7 +82,8 @@ const Quiz = ({quizzes}) => {
             setAnswer(false);
         }
     };
-
+// save result as totalScore from User Schema
+    
 
     return (
         <div className='quizCard'>
@@ -68,28 +111,20 @@ const Quiz = ({quizzes}) => {
                             )}
                         </div>
                         {isQuizComplete && (
-                            <div className='result-section'>
-                                <div className='results'>
+                            <div className='results'>
+                                <div>
                                     <p>Quiz is complete!</p>
-                                    <p> {result} / {quizzes.length}</p>
+                                    <p>Score:{result}</p>
                                 </div>
                             </div>
                         )}
                     </div>
                 </div>
-            ) : (
-                <div className='homepageCard'>
-                    <div className='home-info'>
-                        <h1>Hello, Welcome to CodeMaster!</h1>
-                        <h5>Insert cute frog here</h5>
-                        <h4>CodeMaster is your go-to destination for quick and engaging quizzes
-                            on various coding languages. Whether you're a seasoned programmer looking to test your knowledge or a
-                            beginner eager to learn, our platform has something for everyone.</h4>
-                    </div>
-                </div>)
+            ) : (<h1>Please Login to take Quiz</h1>)
             }
         </div>
     );
 };
+
 
 export default Quiz;
