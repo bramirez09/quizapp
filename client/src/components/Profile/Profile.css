@@ -9,20 +9,22 @@
   height: 115vh;
 }
 
+
 .profileCard {
   margin: 0 0 0 0; 
 }
 
 .card-body {
   text-align: center;
-  padding: 1rem 0 0 0 
+  padding: 1rem 0 0 0;
+  border: 1px solid;
 }
 
 .list-group.list-group-flush {
   margin: auto;
   padding: 0;
   align-items: center;
-  border-radius: 10% 30% 50% 70%;
+  /* border: 1px solid; */
 }
 
 .list-group-item {
@@ -38,9 +40,6 @@
   margin: auto;
 }
 
-.cardLink {
-  font-size: 1.2rem;
-}
 
 a {
   color: #36382E;
@@ -52,22 +51,12 @@ a {
   background-color: transparent;
 }
 
-.cardBody {
-  text-align: center;
-  background: #9C89B8;
-  padding: 1.5rem 5rem 1.5rem 5rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
-  0 2px 4px rgba(0,0,0,0.07), 
-  0 4px 8px rgba(0,0,0,0.07), 
-  0 8px 16px rgba(0,0,0,0.07),
-  0 16px 32px rgba(0,0,0,0.07), 
-  0 32px 64px rgba(0,0,0,0.07);
-}
 
 .btn-primary {
   color: white;
   background-color: var(--font);
   border: none;
+  padding: 1rem 2rem 1rem 2rem 
 }
 
 .btn-primary:hover {
@@ -84,11 +73,12 @@ a {
 
 
 .profileIcon {
-  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+  border: 3px solid;
+  /* box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
                 0 2px 4px rgba(0,0,0,0.07), 
                 0 4px 8px rgba(0,0,0,0.07), 
                 0 8px 16px rgba(0,0,0,0.07),
                 0 16px 32px rgba(0,0,0,0.07), 
-                0 32px 64px rgba(0,0,0,0.07);
+                0 32px 64px rgba(0,0,0,0.07); */
 }
 
