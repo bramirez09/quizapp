@@ -60,3 +60,15 @@ button {
     text-align: center;
     padding: 10px 0px 5px 0px;
 }
+
+.heroContainer {
+  margin:5rem;
+}
+
+.heroImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25rem;
+  height: auto;
+}

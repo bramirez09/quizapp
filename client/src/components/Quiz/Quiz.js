@@ -91,7 +91,11 @@ const Quiz = () => {
                         )}
                     </div>
                 </div>
-            ) : (<h1>Please Login to take Quiz</h1>)
+            ) : (
+              <div className='heroContainer'>
+                <img className="heroImage" src={require('../../assets/CodeWizard.jpg')} alt="lilGuy" />
+              </div>
+              )
             }
         </div>
     );

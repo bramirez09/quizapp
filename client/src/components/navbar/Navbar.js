@@ -22,7 +22,7 @@ const NavBar = () => {
       <Navbar className="NavBar" variant='dark' expand='lg'>
         <Container fluid>
 
-          <Navbar.Brand as={Link} to='/'> <h1> QUIZ APP </h1> </Navbar.Brand>
+          <Navbar.Brand as={Link} to='/'> <h1 className="brandTitle"> CODE WIZARD </h1> </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse id='navbar'>
             <Nav className='ml-auto'>
@@ -30,8 +30,8 @@ const NavBar = () => {
               {/* Signup Modal */}
               {Auth.loggedIn() ? (
                 <>
-                <Link className="btn btn-lg btn-info m-2" to="/me">
-                {Auth.getProfile().data.username}'s profile
+                <Link className="btn btn-primary" to="/me">
+                <h3 className="profileBtn">{Auth.getProfile().data.username}'s profile</h3>
                 </Link>
                 <button className="logoutButton" onClick={logout}>
                   <h3>Logout</h3>

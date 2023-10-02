@@ -49,10 +49,10 @@ const Profile = () => {
                 <h3>{user.username ? `${user.username}` : 'your'} </h3>
               </div>
             <ul className='list-group list-group-flush'>
-              <li className="list-group-item">Your score is: </li>
+              <li className="list-group-item"><h5> Your score is:</h5> </li>
             </ul>
             <div className='card-link'>
-              <Link class="cardLink btn-primary" as={Link} to='/'> Retake Quiz Here </Link>
+              <Link class="btn btn-primary" as={Link} to='/'> <h6>Retake Quiz Here</h6> </Link>
             </div>
           </div>
 
