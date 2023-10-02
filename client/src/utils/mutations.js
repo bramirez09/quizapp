@@ -26,3 +26,23 @@ export const ADD_USER = gql`
       }
     }
 `;
+
+
+export const DELETE_USER = gql`
+    mutation deleteUser($username: String!) {
+      deleteUser(username: $username) {
+        username
+      }
+    }
+`;
+
+
+
+export const UPDATE_SCORE = gql`
+mutation updateScore($totalScore: Int!) {
+  updateScore(totalScore: $totalScore) {
+    _id
+    totalScore
+  }
+}
+`;
