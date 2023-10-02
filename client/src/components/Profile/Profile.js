@@ -23,6 +23,7 @@ console.log(data);
   async function deleteMe() {
     try {
       // TODO: Does this give the username of who's logged in
+      //delete user has a button but need to test functionality 
       const { data } = await deleteUser({
         variables: { username:data?.username },
       });

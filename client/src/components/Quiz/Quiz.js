@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import "./Quiz.css";
 import { QUERY_QUIZ } from '../../utils/queries';
@@ -7,6 +7,29 @@ import { QUERY_USER } from '../../utils/queries';
 import { QUERY_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
+
+const [updateScore] = useMutation(UPDATE_SCORE, {
+    update(cache, { data: { updateScore } }) {
+      try {
+        const { totalScore } = cache.readQuery({ query: QUERY_USER });
+
+        cache.writeQuery({
+          query: QUERY_USER,
+          data: { user: [updateScore, ...totalScore] },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+
+      // update me object's cache
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, user: [...me.totalScore, updateScore] } },
+      });
+    },
+  });
+
 
 const Quiz = () => {
     const { loading, data, error } = useQuery(QUERY_QUIZ);
@@ -28,29 +51,6 @@ const Quiz = () => {
         console.error("Error fetching quiz data:", error);
         return <p>Error fetching quiz data.</p>;
     }
-
-    const [updateScore] = useMutation(UPDATE_SCORE, {
-        update(cache, { data: { updateScore } }) {
-          try {
-            const { totalScore } = cache.readQuery({ query: QUERY_USER });
-    
-            cache.writeQuery({
-              query: QUERY_USER,
-              data: { user: [updateScore, ...totalScore] },
-            });
-          } catch (e) {
-            console.error(e);
-          }
-    
-          // update me object's cache
-          const { me } = cache.readQuery({ query: QUERY_ME });
-          cache.writeQuery({
-            query: QUERY_ME,
-            data: { me: { ...me, user: [...me.totalScore, updateScore] } },
-          });
-        },
-      });
-    
 
 
     const { question, answers, correct_answer } = quizzes[currentQuestion];
@@ -126,5 +126,7 @@ const Quiz = () => {
     );
 };
 
-
+//result is the user's score after completing the quiz. 
+//totalScore is defined in the schema for User.
+//TODO: how do we update User schema information with the results from the quiz
 export default Quiz;
