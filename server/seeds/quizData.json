@@ -13,5 +13,40 @@
         "question": "How do you create a function in JavaScript?",
         "answers": [ "functions myFunction()", "function:myFunction()", "function = myFunction()","function myFunction()" ],
         "correct_answer": "function myFunction()"
+    },
+    {
+        "question": "Which of the following is an Array?",
+        "answers": [ "['Winifred','Mary','Sarah']", "function:myFunction()", "console.log()","for (let i=0; i<5; i++)" ],
+        "correct_answer": "['Winifred','Mary','Sarah']"
+    },
+    {
+        "question": "Select the best answer that describes the difference between JavaScript and Java ",
+        "answers": [ "There is no difference", "JS is a lightweight scripting language and Java is a general purpose programming language", "js is back-end and java is front-end","js and java serve the same purpose" ],
+        "correct_answer": "JS is a lightweight scripting language and Java is a general purpose programming language"
+    },
+    {
+        "question": "Which one is a function-scoped variable?",
+        "answers": [ "let", "const", "x","var" ],
+        "correct_answer": "var"
+    },
+    {
+        "question": "Which variable best allows reassignment?",
+        "answers": [ "let", "const", "x","var" ],
+        "correct_answer": "let"
+    },
+    {
+        "question": "Which operator checks for value and type equality?",
+        "answers": [ "=", "==", "===","=!" ],
+        "correct_answer": "==="
+    },
+    {
+        "question": "Which two main components makeup an event loop?",
+        "answers": [ "for loop and function", "variables and algorithmns", "call stack and event queue","javascript and java" ],
+        "correct_answer": "call stack and event queue"
+    },
+    {
+        "question": "Which mechanisms can be used to achieve asynchronous programming?",
+        "answers": [ "callbacks", "promises", "async/await","all of the above" ],
+        "correct_answer": "all of the above"
     }
 ]
