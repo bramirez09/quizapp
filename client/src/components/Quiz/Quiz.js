@@ -1,10 +1,45 @@
-import { React, useState } from 'react';
-import "./Quiz.css";
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+
 import { QUERY_QUIZ } from '../../utils/queries';
+import { UPDATE_SCORE } from '../../utils/mutations';
+import { QUERY_USER } from '../../utils/queries';
+import { QUERY_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
+
 import Auth from '../../utils/auth';
+import "./Quiz.css";
+
+
+
 
 const Quiz = () => {
+
+    // const [updateScore] 
+
+    const [updateScore] = useMutation(UPDATE_SCORE, {
+      update(cache, { data: { updateScore } }) {
+        try {
+          const { totalScore } = cache.readQuery({ query: QUERY_USER });
+
+          cache.writeQuery({
+            query: QUERY_USER,
+            data: { user: [updateScore, ...totalScore] },
+          });
+        } catch (e) {
+          console.error(e);
+        }
+
+        // update me object's cache
+        const { me } = cache.readQuery({ query: QUERY_ME });
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: { ...me, user: [...me.totalScore, updateScore] } },
+        });
+      },
+    });
+
+
     const { loading, data, error } = useQuery(QUERY_QUIZ);
     const quizzes = data?.quizzes || [];
     console.log(data)
@@ -24,6 +59,7 @@ const Quiz = () => {
         console.error("Error fetching quiz data:", error);
         return <p>Error fetching quiz data.</p>;
     }
+
 
     const { question, answers, correct_answer } = quizzes[currentQuestion];
 
@@ -55,6 +91,11 @@ const Quiz = () => {
         }
     };
 
+    // TODO:: SAVE SCORE ----------->
+
+    const handleSavedScore = () => { 
+    console.log("this is the score")
+  }
 
     return (
         <div className='quizCard'>
@@ -78,7 +119,9 @@ const Quiz = () => {
                             {currentQuestion < quizzes.length - 1 ? (
                                 <button onClick={handleNextQuestion}>Next</button>
                             ) : (
-                                <button onClick={handleNextQuestion} disabled={isButtonDisabled}>See My Score</button>
+
+                                // TODO: REDIRECT TO PROFILE PAGE TO SEE SCORE? 
+                                <button onClick={handleSavedScore} >See My Score</button>
                             )}
                         </div>
                         {isQuizComplete && (
@@ -91,15 +134,15 @@ const Quiz = () => {
                         )}
                     </div>
                 </div>
-            ) : (
-              <div className='heroContainer'>
-                <img className="heroImage" src={require('../../assets/CodeWizard.jpg')} alt="lilGuy" />
-              </div>
-              )
+            ) : (<h1>Please Login to take Quiz</h1>)
             }
         </div>
     );
 };
+
+//result is the user's score after completing the quiz. 
+//totalScore is defined in the schema for User.
+//TODO: how do we update User schema information with the results from the quiz
 
 
 export default Quiz;

@@ -3,17 +3,17 @@ const bcrypt = require('bcrypt');
 
 
 
-const scoreSchema = new Schema({
-  score: {
-    type: Number,
-    required: true,
-  },
-  // created_at: {
-  //   type: Date(),
-  //   required: true,
-  // },
-//   add categories here later
-});
+// // const scoreSchema = new Schema({
+// //   score: {
+// //     type: Number,
+// //     required: true,
+// //   },
+//   // created_at: {
+//   //   type: Date(),
+//   //   required: true,
+//   // },
+// //   add categories here later
+// });
 
 const userSchema = new Schema(
   {
@@ -21,7 +21,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      trim: true,
     },
     email: {
       type: String,
@@ -32,9 +31,11 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
-      minlength: 5,
     },
-    savedScore: [scoreSchema],
+    totalScore: {
+      type: Schema.Types.Number,
+      required: false,
+    }
   },
   // set this to use virtual below
   {

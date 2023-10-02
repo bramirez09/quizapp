@@ -11,6 +11,8 @@ import Auth from '../../utils/auth';
 const Profile = () => {
   const { username: userParam } = useParams();
 
+  console.log("userparam:", userParam);
+
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
@@ -29,7 +31,7 @@ const Profile = () => {
     return (
       <h4>
         You need to be logged in to see this. Use the navigation links above to
-        sign up or log in!
+        sign up or log in! 
       </h4>
     );
   }
@@ -52,7 +54,7 @@ const Profile = () => {
               <li className="list-group-item"><h5> Your score is:</h5> </li>
             </ul>
             <div className='card-link'>
-              <Link class="btn btn-primary" as={Link} to='/'> <h6>Retake Quiz Here</h6> </Link>
+              <Link className="btn btn-primary" as={Link} to='/'> <h6>Retake Quiz Here</h6> </Link>
             </div>
           </div>
 
@@ -63,7 +65,7 @@ const Profile = () => {
                 <div className='cardBody'>
                   <h5 className='card-title'>TAKE NEXT QUIZ</h5>
                   <p className='card-text'>Continue your journey. Take another quiz in your journey in becoming a Coding Wizard.</p>
-                  <a href=" " class="btn btn-primary">Next</a>
+                  <a href=" " className="btn btn-primary">Next</a>
                 </div>
               </div>
             </div>
