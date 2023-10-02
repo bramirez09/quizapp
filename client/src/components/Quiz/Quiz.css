@@ -69,3 +69,19 @@ button {
     text-align: center;
     padding: 20px;
 }
+
+.heroImage {
+  display: flex;
+  justify-content: center;
+  width: 50rem;
+  height: auto;
+}
+
+.Welcome { 
+  display: flex;
+  justify-content: center;
+}
+
+.welcomeType { 
+  
+}

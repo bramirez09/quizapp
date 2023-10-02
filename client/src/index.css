@@ -1,6 +1,6 @@
 :root {
   --max-width: 1350px;
-  --background: #ebd6ad;
+  --background: #F6EEE3;
   --font: #cc333c;
  
 }
@@ -14,13 +14,13 @@
 }
 
 body {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Libre Baskerville', serif;
   background-color: var(--background);
   
 }
 
 h2 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Libre Baskerville', serif;
   font-size: 5rem;
   color: var(--font);
   text-align: center;
@@ -36,7 +36,7 @@ h3 {
 h4,
 h5,
 h6 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Libre Baskerville', serif;
   font-weight: 400;
 }
 

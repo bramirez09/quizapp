@@ -44,33 +44,17 @@ const Profile = () => {
         </h2>
 
         <div className='row'>
-          {/* PROFILE CARD / EXAMPLE SHELL */}
-          <div className='profileCard col-sm-3' style={{width: "18rem"}}>
-            <img className="profileIcon" src={require('../../assets/frog-hat.jpg')} alt="Card image cap" />
-              <div className='card-body'>
-                <h3>{user.username ? `${user.username}` : 'your'} </h3>
+
+            {/* PROFILE CARD / EXAMPLE SHELL */}
+            <div className='profileCard col-sm-3' style={{width: "18rem"}}>
+              <img className="profileIcon" src={require('../../assets/profileIcon.png')} alt="Card image cap" />
+              <ul className='list-group list-group-flush'>
+                <li className="list-group-item"><h5> Your score is:</h5> </li>
+              </ul>
+              <ul className='list-group list-group-flush'>
+                <Link className="btn btn-primary" as={Link} to='/'> <h6>Retake Quiz Here</h6> </Link>
+              </ul>
               </div>
-            <ul className='list-group list-group-flush'>
-              <li className="list-group-item"><h5> Your score is:</h5> </li>
-            </ul>
-            <div className='card-link'>
-              <Link className="btn btn-primary" as={Link} to='/'> <h6>Retake Quiz Here</h6> </Link>
-            </div>
-          </div>
-
-          <div className='column'>
-
-            <div className='col-sm-12'>
-              <div className='card'>
-                <div className='cardBody'>
-                  <h5 className='card-title'>TAKE NEXT QUIZ</h5>
-                  <p className='card-text'>Continue your journey. Take another quiz in your journey in becoming a Coding Wizard.</p>
-                  <a href=" " className="btn btn-primary">Next</a>
-                </div>
-              </div>
-            </div>
-
-          </div>
 
 
 

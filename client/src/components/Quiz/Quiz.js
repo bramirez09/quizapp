@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
+import { Navigate} from 'react-router-dom';
 
 import { QUERY_QUIZ } from '../../utils/queries';
 import { UPDATE_SCORE } from '../../utils/mutations';
@@ -63,6 +64,7 @@ const Quiz = () => {
 
     const { question, answers, correct_answer } = quizzes[currentQuestion];
 
+    // Quiz Logic ------------>
 
     const handleNextQuestion = () => {
         
@@ -70,7 +72,7 @@ const Quiz = () => {
             setIsQuizComplete(true);
             setInterval(()=>{
                 window.location.href = "/me"
-            },5000)
+            })
             console.log("quiz is set to complete")
             setIsButtonDisabled(true);
         }
@@ -82,6 +84,7 @@ const Quiz = () => {
         console.log("score:", result);
         console.log(answer);
     };
+
     const handleAnswerSelection = (answer, answerIndex) => {
         setSelectedAnswer(answerIndex);
         if (answer === correct_answer) {
@@ -94,7 +97,15 @@ const Quiz = () => {
     // TODO:: SAVE SCORE ----------->
 
     const handleSavedScore = () => { 
-    console.log("this is the score")
+      if (currentQuestion === quizzes.length - 1) {
+            setIsQuizComplete(true);
+            console.log("quiz is set to complete")
+            console.log("this is the score")
+            return <Navigate to="/me" />
+            ;
+            
+        }
+    
   }
 
     return (
@@ -121,20 +132,28 @@ const Quiz = () => {
                             ) : (
 
                                 // TODO: REDIRECT TO PROFILE PAGE TO SEE SCORE? 
-                                <button onClick={handleSavedScore} >See My Score</button>
-                            )}
+                                <button onClick={handleSavedScore} >Quiz complete! Go to Profile </button>
+                            )} 
                         </div>
                         {isQuizComplete && (
                             <div className='results'>
                                 <div>
                                     <p>Quiz is complete!</p>
                                     <p>Score:{result}</p>
+                                    
                                 </div>
                             </div>
+                            
                         )}
                     </div>
                 </div>
-            ) : (<h1>Please Login to take Quiz</h1>)
+            ) : (   
+            <div className='row'>
+              <div className='Welcome'>
+                <h1 className='welcomeType'>Welcome!</h1>
+              </div>
+            <img className="heroImage" src={require('../../assets/Frogboy.png')} alt="lilGuy" />
+          </div>)
             }
         </div>
     );
