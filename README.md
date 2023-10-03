@@ -18,7 +18,6 @@
 * [Sources](#sources)
 
 
-
 ## Description
 
 Welcome to Code Wizard!
@@ -29,6 +28,7 @@ First, the user will create a profile.  Quizzes are conveniently accessible from
 
 
 ## User Story
+
 ```
 AS A programmer,
 
