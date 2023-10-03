@@ -14,7 +14,7 @@ const Profile = () => {
 
   const score = localStorage.getItem("scores");
   
-  const { username: userParam } = useParams();
+  const { username } = useParams();
 
   console.log("userparam:", username);
 
