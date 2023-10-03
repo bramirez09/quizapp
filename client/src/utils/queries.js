@@ -17,6 +17,7 @@ export const QUERY_USER = gql `
       _id
       username
       email
+      scores
     }
   }
 `
@@ -27,6 +28,7 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      scores
     }
   }
 `;

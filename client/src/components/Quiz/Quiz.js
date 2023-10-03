@@ -1,11 +1,18 @@
 import { React, useState } from 'react';
 import "./Quiz.css";
-import { QUERY_QUIZ } from '../../utils/queries';
+import { QUERY_QUIZ, QUERY_USER, QUERY_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
+import { useMutation } from '@apollo/client';
+
+import { ADD_SCORE } from '../../utils/mutations';
 
 const Quiz = () => {
+    const username = Auth.loggedIn() ? Auth.getProfile().data.username : '';
     const { loading, data, error } = useQuery(QUERY_QUIZ);
+    const { load, userData, err } = useQuery(username ? QUERY_USER : QUERY_ME, {
+        variables: { username: username },
+      });
     const quizzes = data?.quizzes || [];
     console.log(data)
 
@@ -15,6 +22,7 @@ const Quiz = () => {
     const [answer, setAnswer] = useState(null);
     const [result, setResult] = useState(0);
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+    const [addScore, { e }] = useMutation(ADD_SCORE);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -28,9 +36,11 @@ const Quiz = () => {
     const { question, answers, correct_answer } = quizzes[currentQuestion];
 
 
-    const handleNextQuestion = () => {
-        
+    const handleNextQuestion = async () => {
         if (currentQuestion === quizzes.length - 1) {
+            const userData = await addScore({
+                variables: { username, score },
+              });
             setIsQuizComplete(true);
             setInterval(()=>{
                 window.location.href = "/me"
@@ -43,9 +53,12 @@ const Quiz = () => {
         }
         setSelectedAnswer(null);
         setResult((answer ? result + 1 : result));
+        const score = result;
         console.log("score:", result);
         console.log(answer);
+        console.log("for goodness sake", score);
     };
+
     const handleAnswerSelection = (answer, answerIndex) => {
         setSelectedAnswer(answerIndex);
         if (answer === correct_answer) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
+import { Link } from "react-router-dom"
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
@@ -20,7 +20,7 @@ const Profile = () => {
     return <div>Error occurred while fetching data {error.message}</div>;
   }
   // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  if (Auth.loggedIn() && Auth.getProfile().data.username === data) {
     return <Navigate to="/me" />;
   }
 
@@ -47,12 +47,12 @@ const Profile = () => {
         <div className='row'>
           {/* PROFILE CARD / EXAMPLE SHELL */}
           <div className='profileCard' style={{width: "18rem"}}>
-            <img className="profileIcon" src={require('../../assets/frog-hat.jpg')} alt="Card image cap" />
+            {/* <img className="profileIcon" src={require('../../assets/frog-hat.jpg')} alt="Card image cap" /> */}
               <div className='card-body'>
                 <h3>{user.username ? `${user.username}` : 'your'} </h3>
               </div>
             <ul className='list-group list-group-flush'>
-              <li className="list-group-item">Your score is: </li>
+              <li className="list-group-item">Your score is:user.savedscore.score </li>
             </ul>
             <div className='card-link'>
               <Link className="cardLink btn-primary" as={Link} to='/'> Retake Quiz Here </Link>

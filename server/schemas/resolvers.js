@@ -44,7 +44,16 @@ const resolvers = {
         const token = signToken(user);
         return { token, user };
       },
-      
+      addScore: async (parent, { username, score }, context) => {
+        if (context.user) {
+          return User.findOneAndUpdate(
+            { username: username },
+            {
+              $addToSet: { scores: score },
+            },
+          );
+        }
+      },
   
     },
   };
