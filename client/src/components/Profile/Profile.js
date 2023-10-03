@@ -11,6 +11,8 @@ import Auth from '../../utils/auth';
 const Profile = () => {
   const { username: userParam } = useParams();
 
+  console.log("userparam:", userParam);
+
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
@@ -29,7 +31,7 @@ const Profile = () => {
     return (
       <h4>
         You need to be logged in to see this. Use the navigation links above to
-        sign up or log in!
+        sign up or log in! 
       </h4>
     );
   }
@@ -42,33 +44,17 @@ const Profile = () => {
         </h2>
 
         <div className='row'>
-          {/* PROFILE CARD / EXAMPLE SHELL */}
-          <div className='profileCard' style={{width: "18rem"}}>
-            <img className="profileIcon" src={require('../../assets/frog-hat.jpg')} alt="Card image cap" />
-              <div className='card-body'>
-                <h3>{user.username ? `${user.username}` : 'your'} </h3>
+
+            {/* PROFILE CARD / EXAMPLE SHELL */}
+            <div className='profileCard col-sm-3' style={{width: "18rem"}}>
+              <img className="profileIcon" src={require('../../assets/profileIcon.png')} alt="Card image cap" />
+              <ul className='list-group list-group-flush'>
+                <li className="list-group-item"><h5> Your score is:</h5> </li>
+              </ul>
+              <ul className='list-group list-group-flush'>
+                <Link className="btn btn-primary" as={Link} to='/'> <h6>Retake Quiz Here</h6> </Link>
+              </ul>
               </div>
-            <ul className='list-group list-group-flush'>
-              <li className="list-group-item">Your score is: </li>
-            </ul>
-            <div className='card-link'>
-              <Link class="cardLink btn-primary" as={Link} to='/'> Retake Quiz Here </Link>
-            </div>
-          </div>
-
-          <div className='column'>
-
-            <div className='col-sm-10'>
-              <div className='card'>
-                <div className='cardBody'>
-                  <h5 className='card-title'>TAKE NEXT QUIZ</h5>
-                  <p className='card-text'>Continue your journey. Take another quiz in your journey in becoming a Coding Wizard.</p>
-                  <a href=" " class="btn btn-primary">Next</a>
-                </div>
-              </div>
-            </div>
-
-          </div>
 
 
 

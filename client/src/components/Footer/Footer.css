@@ -8,8 +8,8 @@ footer {
   align-items: center;
   padding: 1rem;
   border-top: solid;
-  max-width: 90rem;
   margin: auto;
+  position: absolute;
 }
 
 .social-container{

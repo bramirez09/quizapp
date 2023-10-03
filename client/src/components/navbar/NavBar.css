@@ -14,7 +14,14 @@
     color: var(--font);
     max-width: 90rem;
     margin: auto;
+    align-items: center;
     padding-top: 1.5rem;
+  }
+
+  .brandTitle {
+    font-family: 'Fjalla One', sans-serif;
+    font-weight: 400;
+    font-size: 3rem;
   }
   
   .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
@@ -33,16 +40,22 @@
   .btn-success.disabled, .btn-success:disabled {
     color: var(--background);
   }
+
+
   
   h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Libre Baskerville', serif;
     /* font-size: 60px; */
     color: var(--font);
     margin: auto;
   }
   
   h3 {
-    color: var(--font)
+    color: var(--font);
+    text-decoration: none;
+  }
+  .profileBtn {
+    color: var(--background)
   }
   
   .logoutButton {
@@ -52,12 +65,9 @@
   
   }
 
-  .btn-info {
-    background-color: var(--font);
-    border: none;
+btn-primary:hover {
+  color: white;
+  background-color: #4F9D69;
+  border: none;
   }
 
-  .btn-info:hover {
-    background-color: #4F9D69;
-    border: none;
-  }

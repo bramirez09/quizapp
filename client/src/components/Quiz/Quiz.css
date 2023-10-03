@@ -1,10 +1,10 @@
 .quizCard {
     display: flex;
     justify-content: center;
-    margin: 0 auto;
     width: auto;
     padding: 0 30px;
     height: 100vh;
+    margin-bottom: 100px;
 }
 
 .quiz {
@@ -37,8 +37,8 @@ li {
 }
 
 .selected {
-    color: rgb(0, 0, 0);
-    background: var(--accent);
+    color: white;
+    background: linear-gradient(#cc333c, #521217)
 }
 
 .btn {
@@ -51,12 +51,37 @@ button {
     padding: 5px 5px;
 }
 
-.results {
+.result-section {
     display: flex;
     justify-content: center;
 }
 
-.results h6 {
+.results {
     text-align: center;
-    padding: 10px 0px 5px 0px;
+    padding: 5px 0px 0px 0px;
+    background-color: white;
+    border: #cc333c solid 2px;
+    padding: 8px 5px 0px 5px;
+}
+
+.homepageCard {
+    display: flex;
+    text-align: center;
+    padding: 20px;
+}
+
+.heroImage {
+  display: flex;
+  justify-content: center;
+  width: 50rem;
+  height: auto;
+}
+
+.Welcome { 
+  display: flex;
+  justify-content: center;
+}
+
+.welcomeType { 
+  
 }

@@ -1,10 +1,46 @@
-import { React, useState } from 'react';
-import "./Quiz.css";
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import { Navigate} from 'react-router-dom';
+
 import { QUERY_QUIZ } from '../../utils/queries';
+import { UPDATE_SCORE } from '../../utils/mutations';
+import { QUERY_USER } from '../../utils/queries';
+import { QUERY_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
+
 import Auth from '../../utils/auth';
+import "./Quiz.css";
+
+
+
 
 const Quiz = () => {
+
+    // const [updateScore] 
+
+    const [updateScore] = useMutation(UPDATE_SCORE, {
+      update(cache, { data: { updateScore } }) {
+        try {
+          const { totalScore } = cache.readQuery({ query: QUERY_USER });
+
+          cache.writeQuery({
+            query: QUERY_USER,
+            data: { user: [updateScore, ...totalScore] },
+          });
+        } catch (e) {
+          console.error(e);
+        }
+
+        // update me object's cache
+        const { me } = cache.readQuery({ query: QUERY_ME });
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: { ...me, user: [...me.totalScore, updateScore] } },
+        });
+      },
+    });
+
+
     const { loading, data, error } = useQuery(QUERY_QUIZ);
     const quizzes = data?.quizzes || [];
     console.log(data)
@@ -25,8 +61,10 @@ const Quiz = () => {
         return <p>Error fetching quiz data.</p>;
     }
 
+
     const { question, answers, correct_answer } = quizzes[currentQuestion];
 
+    // Quiz Logic ------------>
 
     const handleNextQuestion = () => {
         
@@ -34,7 +72,7 @@ const Quiz = () => {
             setIsQuizComplete(true);
             setInterval(()=>{
                 window.location.href = "/me"
-            },5000)
+            })
             console.log("quiz is set to complete")
             setIsButtonDisabled(true);
         }
@@ -46,6 +84,7 @@ const Quiz = () => {
         console.log("score:", result);
         console.log(answer);
     };
+
     const handleAnswerSelection = (answer, answerIndex) => {
         setSelectedAnswer(answerIndex);
         if (answer === correct_answer) {
@@ -55,6 +94,19 @@ const Quiz = () => {
         }
     };
 
+    // TODO:: SAVE SCORE ----------->
+
+    const handleSavedScore = () => { 
+      if (currentQuestion === quizzes.length - 1) {
+            setIsQuizComplete(true);
+            console.log("quiz is set to complete")
+            console.log("this is the score")
+            return <Navigate to="/me" />
+            ;
+            
+        }
+    
+  }
 
     return (
         <div className='quizCard'>
@@ -78,24 +130,38 @@ const Quiz = () => {
                             {currentQuestion < quizzes.length - 1 ? (
                                 <button onClick={handleNextQuestion}>Next</button>
                             ) : (
-                                <button onClick={handleNextQuestion} disabled={isButtonDisabled}>See My Score</button>
-                            )}
+
+                                // TODO: REDIRECT TO PROFILE PAGE TO SEE SCORE? 
+                                <button onClick={handleSavedScore} >Quiz complete! Go to Profile </button>
+                            )} 
                         </div>
                         {isQuizComplete && (
                             <div className='results'>
                                 <div>
                                     <p>Quiz is complete!</p>
                                     <p>Score:{result}</p>
+                                    
                                 </div>
                             </div>
+                            
                         )}
                     </div>
                 </div>
-            ) : (<h1>Please Login to take Quiz</h1>)
+            ) : (   
+            <div className='row'>
+              <div className='Welcome'>
+                <h1 className='welcomeType'>Welcome!</h1>
+              </div>
+            <img className="heroImage" src={require('../../assets/Frogboy.png')} alt="lilGuy" />
+          </div>)
             }
         </div>
     );
 };
+
+//result is the user's score after completing the quiz. 
+//totalScore is defined in the schema for User.
+//TODO: how do we update User schema information with the results from the quiz
 
 
 export default Quiz;

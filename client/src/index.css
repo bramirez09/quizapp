@@ -1,6 +1,6 @@
 :root {
   --max-width: 1350px;
-  --background: #ebd6ad;
+  --background: #F6EEE3;
   --font: #cc333c;
  
 }
@@ -14,24 +14,30 @@
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Libre Baskerville', serif;
   background-color: var(--background);
   
 }
 
 h2 {
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Libre Baskerville', serif;
   font-size: 5rem;
   color: var(--font);
   text-align: center;
   padding: 1.5rem;
 }
 
-h3,
+h3 {
+  font-weight: 300;
+
+}
+
+
 h4,
 h5,
 h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
 }
 
 .small {

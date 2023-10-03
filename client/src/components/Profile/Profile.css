@@ -6,22 +6,25 @@
 .row {
   display: flex; 
   justify-content: center;
+  height: 115vh;
 }
 
+
 .profileCard {
-  margin: 0 0 0 10rem; 
+  margin: 0 0 0 0; 
 }
 
 .card-body {
   text-align: center;
-  padding: 1rem 0 0 0 
+  padding: 1rem 0 0 0;
+  border: 1px solid;
 }
 
 .list-group.list-group-flush {
   margin: auto;
   padding: 0;
   align-items: center;
-  border-radius: 10% 30% 50% 70%;
+  /* border: 1px solid; */
 }
 
 .list-group-item {
@@ -33,44 +36,27 @@
 
 .card-link {
   text-align: center; 
-  width: 65%;
+  width: 55%;
   margin: auto;
-  padding: .5rem 0 .5rem 0 ;
-  border-radius: .5rem;
-  background-color: var(--font);
 }
 
-.carLink {
-  font-size: 1.3rem;
-}
 
 a {
   color: #36382E;
 }
 
 .card {
-  padding: 3rem 0 0 8rem;
+  padding: 3rem 0 0 0rem;
   border: none;
   background-color: transparent;
 }
 
-.cardBody {
-  text-align: center;
-  background: #9C89B8;
-  border-radius: 8rem;
-  padding: 1.5rem 5rem 1.5rem 5rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
-  0 2px 4px rgba(0,0,0,0.07), 
-  0 4px 8px rgba(0,0,0,0.07), 
-  0 8px 16px rgba(0,0,0,0.07),
-  0 16px 32px rgba(0,0,0,0.07), 
-  0 32px 64px rgba(0,0,0,0.07);
-}
 
 .btn-primary {
   color: white;
   background-color: var(--font);
   border: none;
+  padding: 1rem 2rem 1rem 2rem 
 }
 
 .btn-primary:hover {
@@ -79,12 +65,20 @@ a {
   border: none;
 }
 
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+  color: var(--font) !important;
+}
+
+
 .profileIcon {
-  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+  border: 3px solid;
+  /* box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
                 0 2px 4px rgba(0,0,0,0.07), 
                 0 4px 8px rgba(0,0,0,0.07), 
                 0 8px 16px rgba(0,0,0,0.07),
                 0 16px 32px rgba(0,0,0,0.07), 
-                0 32px 64px rgba(0,0,0,0.07);
+                0 32px 64px rgba(0,0,0,0.07); */
 }
 
