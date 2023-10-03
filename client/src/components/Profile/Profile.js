@@ -2,6 +2,8 @@ import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/react-hooks';
+// import { DELETE_USER } from '../../utils/mutations';
 
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 
@@ -9,17 +11,35 @@ import '../../components/Profile/Profile.css'
 import Auth from '../../utils/auth';
 
 const Profile = () => {
-  const { username: userParam } = useParams();
+  const score = localStorage.getItem("scores");
+  const { username } = useParams();
 
-  console.log("userparam:", userParam);
+  console.log("userparam:", username);
 
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam },
+  const { loading, data, error } = useQuery(username ? QUERY_USER : QUERY_ME, {
+    variables: { username: username },
   });
 
   const user = data?.me || data?.user || {};
+
+  // const [deleteUser] = useMutation(DELETE_USER);
+
+  // async function deleteMe() {
+  //   try {
+  //     // TODO: Does this give the username of who's logged in
+  //     //delete user has a button but need to test functionality 
+  //     const { data } = await deleteUser({
+  //       variables: { username:data?.username },
+  //     });
+
+  //     Auth.logout(); 
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+
   // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
     return <Navigate to="/me" />;
   }
 
@@ -36,6 +56,7 @@ const Profile = () => {
     );
   }
 
+
   return (
     <div>
       <div className='flex-row justify-center mb-3'>
@@ -49,11 +70,14 @@ const Profile = () => {
             <div className='profileCard col-sm-3' style={{width: "18rem"}}>
               <img className="profileIcon" src={require('../../assets/profileIcon.png')} alt="Card image cap" />
               <ul className='list-group list-group-flush'>
-                <li className="list-group-item"><h5> Your score is:</h5> </li>
+                <li className="list-group-item"><h5> Your score is: {score}</h5> </li>
               </ul>
               <ul className='list-group list-group-flush'>
                 <Link className="btn btn-primary" as={Link} to='/'> <h6>Retake Quiz Here</h6> </Link>
               </ul>
+              {/* <ul className='list-group list-group-flush'>
+              <button className="btn btn-primary" onClick={(e)=>deleteMe()}>Delete Profile</button>
+              </ul> */}
               </div>
 
 

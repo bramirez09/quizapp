@@ -16,32 +16,11 @@ import "./Quiz.css";
 
 const Quiz = () => {
 
-    // const [updateScore] 
-
-    const [updateScore] = useMutation(UPDATE_SCORE, {
-      update(cache, { data: { updateScore } }) {
-        try {
-          const { totalScore } = cache.readQuery({ query: QUERY_USER });
-
-          cache.writeQuery({
-            query: QUERY_USER,
-            data: { user: [updateScore, ...totalScore] },
-          });
-        } catch (e) {
-          console.error(e);
-        }
-
-        // update me object's cache
-        const { me } = cache.readQuery({ query: QUERY_ME });
-        cache.writeQuery({
-          query: QUERY_ME,
-          data: { me: { ...me, user: [...me.totalScore, updateScore] } },
-        });
-      },
-    });
-
-
+    const username = Auth.loggedIn() ? Auth.getProfile().data.username : '';
     const { loading, data, error } = useQuery(QUERY_QUIZ);
+    const { load, userData, err } = useQuery(username ? QUERY_USER : QUERY_ME, {
+        variables: { username: username },
+      });
     const quizzes = data?.quizzes || [];
     console.log(data)
 
@@ -81,8 +60,9 @@ const Quiz = () => {
         }
         setSelectedAnswer(null);
         setResult((answer ? result + 1 : result));
-        console.log("score:", result);
-        console.log(answer);
+        localStorage.setItem("scores", JSON.stringify(result + 1));
+        console.log("result:", result);
+        console.log("answer", answer);
     };
 
     const handleAnswerSelection = (answer, answerIndex) => {
