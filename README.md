@@ -1,9 +1,14 @@
 # CODE WIZARD
+
   [![GitHub License](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/)
+
+### **_[LINK TO DEPLOYED SITE]( )_**
+
+
 ## Table of Contents
 
 * [Description](#description)
-* [User Story](#description)
+* [User Story](#user-story)
 * [App Preview](#app-preview)
 * [Technologies Used](#technologies-used)
 * [Installation](#installation)
@@ -11,7 +16,6 @@
 * [Contributors](#contributors)
 * [License](#license)
 * [Sources](#sources)
-
 
 
 ## Description
@@ -25,11 +29,13 @@ First, the user will create a profile.  Quizzes are conveniently accessible from
 
 ## User Story
 
+```
 AS A programmer,
 
 I WANT to take a coding quiz
 
 SO I can improve my programming knowledge.
+```
 
 
 ## App Preview
@@ -74,13 +80,13 @@ npm run develop
 
 ## Contributors
 
-Brenda Ramirez
+[Brenda Ramirez](https://github.com/bramirez09)
 
-Bo Salinas
+[Bo Salinas](https://github.com/bosalinas)
 
-Jayn&eacute; Valverde
+[Jayn&eacute; Valverde](https://github.com/JayneValverde)
 
-Sarah Squyres
+[Sarah Squyres](https://github.com/SarahSquyres)
 
 
 ## License
