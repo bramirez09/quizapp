@@ -3,7 +3,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/react-hooks';
-// import { DELETE_USER } from '../../utils/mutations';
+import { DELETE_USER } from '../../utils/mutations';
 
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 
@@ -11,8 +11,10 @@ import '../../components/Profile/Profile.css'
 import Auth from '../../utils/auth';
 
 const Profile = () => {
+
   const score = localStorage.getItem("scores");
-  const { username } = useParams();
+  
+  const { username: userParam } = useParams();
 
   console.log("userparam:", username);
 
@@ -22,21 +24,21 @@ const Profile = () => {
 
   const user = data?.me || data?.user || {};
 
-  // const [deleteUser] = useMutation(DELETE_USER);
+  const [deleteUser] = useMutation(DELETE_USER);
 
-  // async function deleteMe() {
-  //   try {
-  //     // TODO: Does this give the username of who's logged in
-  //     //delete user has a button but need to test functionality 
-  //     const { data } = await deleteUser({
-  //       variables: { username:data?.username },
-  //     });
+  async function deleteMe() {
+    try {
+      // TODO: Does this give the username of who's logged in
+      //delete user has a button but need to test functionality 
+      const { data } = await deleteUser({
+        variables: { username:data?.username },
+      });
 
-  //     Auth.logout(); 
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+      Auth.logout(); 
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
@@ -70,22 +72,22 @@ const Profile = () => {
             <div className='profileCard col-sm-3' style={{width: "18rem"}}>
               <img className="profileIcon" src={require('../../assets/profileIcon.png')} alt="Card image cap" />
               <ul className='list-group list-group-flush'>
-                <li className="list-group-item"><h5> Your score is: {score}</h5> </li>
+                <li className="list-group-item"><h5> Your score is: {score} </h5> </li>
               </ul>
               <ul className='list-group list-group-flush'>
                 <Link className="btn btn-primary" as={Link} to='/'> <h6>Retake Quiz Here</h6> </Link>
               </ul>
-              {/* <ul className='list-group list-group-flush'>
-              <button className="btn btn-primary" onClick={(e)=>deleteMe()}>Delete Profile</button>
-              </ul> */}
+              
               </div>
-
-
 
 
         </div>
 
-        
+        <div className='deleteContainer'>
+            
+        <Link className='btn btn-secondary' onClick={(e)=>deleteMe()}><h6 className='type'>Delete Profile</h6></Link>
+
+        </div>
         
 
       {/* <div className="col-12 col-md-10 mb-3 p-3" style={{ border: '1px dotted #1a1a1a' }}>
