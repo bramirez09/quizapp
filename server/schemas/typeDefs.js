@@ -30,6 +30,7 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     updateScore(totalScore: Int!): User
     deleteUser(username: String!): User
+    removeProfile: User
   }
 `;
 
