@@ -43,6 +43,11 @@ const resolvers = {
         console.log("user test data:", data);
         return data;
       },
+      removeProfile: async (parent, args, context) => {
+        if (context.user) {
+          return User.findOneAndDelete({ _id: context.user._id });
+        }
+      },
   
       login: async (parent, { email, password }) => {
         const user = await User.findOne({ email });
@@ -63,10 +68,7 @@ const resolvers = {
       // TODO: UPDATE SCORE RESOLVER ------------- >
 
       updateScore: async (parent, { totalScore }, context) => {
-        // const score = await User.findOneAndUpdate(
-        //   { username: username }, 
-        //   { $addToSet: { totalScore: totalScore }}
-        //   );  
+  
         if (context.user) {
             const score = await User.findOneAndUpdate(
             { _id: context.user._id },

@@ -28,13 +28,14 @@ export const ADD_USER = gql`
 `;
 
 
-export const DELETE_USER = gql`
-    mutation deleteUser($username: String!) {
-      deleteUser(username: $username) {
-        username
-      }
-    }
-`;
+export const DELETE_USER = gql
+`mutation RemoveProfile {
+  removeProfile {
+    _id
+    username
+  }
+}`;
+
 
 
 
