@@ -69,13 +69,13 @@ npm run develop
 ```
 ## App Preview 
 
-![Screenshot of laundpage](../quizapp/client/src/assets/launchpage.png)
+![Screenshot of launchpage](./client/src/assets/launchpage.png)
 Launch Page
 
-![Screenshot of laundpage](../quizapp/client/src/assets/quiz.png)
+![Screenshot of quiz](./client/src/assets/quiz.png)
 Start of Quiz
 
-![Screenshot of laundpage](../quizapp/client/src/assets/Profile.png)
+![Screenshot of profile](./client/src/assets/Profile.png)
 Profile Page
 
 ## Contributors
