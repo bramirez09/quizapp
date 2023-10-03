@@ -3,7 +3,7 @@
     justify-content: center;
     width: auto;
     padding: 0 30px;
-    height: 100vh;
+    height: 70vh;
     margin-bottom: 100px;
 }
 
@@ -67,14 +67,15 @@ button {
 .homepageCard {
     display: flex;
     text-align: center;
-    padding: 20px;
+    padding: 0;
 }
 
 .heroImage {
   display: flex;
   justify-content: center;
-  width: 50rem;
-  height: auto;
+  padding: 0;
+  margin: 5rem auto auto auto;
+  width: 25rem;
 }
 
 .Welcome { 
@@ -82,6 +83,10 @@ button {
   justify-content: center;
 }
 
-.welcomeType { 
-  
+.welcomeType {
+  display: flex;
+  justify-content: start;
+  margin: auto;
+  padding: 3rem 0 0 0;
+  font-size: 2rem;
 }
