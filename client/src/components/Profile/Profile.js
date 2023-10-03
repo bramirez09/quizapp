@@ -14,12 +14,12 @@ const Profile = () => {
 
   const score = localStorage.getItem("scores");
   
-  const { username: userParam } = useParams();
+  const { username } = useParams();
 
-  console.log("userparam:", userParam);
+  console.log("userparam:", username);
 
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam },
+  const { loading, data, error } = useQuery(username ? QUERY_USER : QUERY_ME, {
+    variables: { username: username },
   });
 
   const user = data?.me || data?.user || {};
@@ -41,7 +41,7 @@ const Profile = () => {
   }
 
   // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
     return <Navigate to="/me" />;
   }
 
