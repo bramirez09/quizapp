@@ -35,13 +35,7 @@ export const DELETE_USER = gql
     username
   }
 }`;
-// export const DELETE_USER = gql`
-// mutation deleteUser($username: String!) {
-//   deleteUser(username: $username) {
-//     _id
-//   }
-// }
-// `;
+
 
 
 

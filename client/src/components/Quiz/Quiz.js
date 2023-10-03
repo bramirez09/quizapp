@@ -14,7 +14,6 @@ const Quiz = () => {
         variables: { username: username },
       });
     const quizzes = data?.quizzes || [];
-    console.log(data)
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -38,9 +37,7 @@ const Quiz = () => {
         if (currentQuestion === quizzes.length - 1) {
 
           setIsQuizComplete(true);
-          // setInterval(() => {
-          //   window.location.href = "/me";
-          // });
+
           console.log("quiz is set to complete");
           setIsButtonDisabled(true);
         }
@@ -52,9 +49,7 @@ const Quiz = () => {
         setSelectedAnswer(null);
         setResult(answer ? result + 1 : result);
         localStorage.setItem("scores", JSON.stringify(result + 1));
-    
-        console.log("result:", result);
-        console.log("answer", answer);
+
       };
       
 

@@ -16,8 +16,6 @@ const Profile = () => {
   
   const { username } = useParams();
 
-  // console.log("userparam:", username);
-
   const { loading, data, error } = useQuery(username ? QUERY_USER : QUERY_ME, {
     variables: { username: username },
   });
@@ -28,12 +26,12 @@ const Profile = () => {
   const [deleteUser] = useMutation(DELETE_USER);
 
   async function deleteMe(test) {
-    console.log("deleteme",test)
+    
     try {
-      // TODO: Does this give the username of who's logged in
+      // Does this give the username of who's logged in
       //delete user has a button but need to test functionality 
       const { data } = await deleteUser({
-        // variables: { username:data?.username },
+        
         variables: { test }
       }); 
       
@@ -91,11 +89,7 @@ const Profile = () => {
         <Link className='btn btn-secondary' onClick={(e)=>deleteMe(user._id)}><h6 className='type'>Delete Profile</h6></Link>
 
         </div>
-        
-
-      {/* <div className="col-12 col-md-10 mb-3 p-3" style={{ border: '1px dotted #1a1a1a' }}>
-        <h3>Quizzes Taken</h3>
-      </div> */}
+    
 
       </div>
 

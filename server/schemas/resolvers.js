@@ -47,7 +47,6 @@ const resolvers = {
         if (context.user) {
           return User.findOneAndDelete({ _id: context.user._id });
         }
-        // throw new AuthenticationError('You need to be logged in!');
       },
   
       login: async (parent, { email, password }) => {
@@ -69,10 +68,7 @@ const resolvers = {
       // TODO: UPDATE SCORE RESOLVER ------------- >
 
       updateScore: async (parent, { totalScore }, context) => {
-        // const score = await User.findOneAndUpdate(
-        //   { username: username }, 
-        //   { $addToSet: { totalScore: totalScore }}
-        //   );  
+  
         if (context.user) {
             const score = await User.findOneAndUpdate(
             { _id: context.user._id },
