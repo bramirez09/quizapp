@@ -105,14 +105,19 @@ const Quiz = () => {
                         )}
                     </div>
                 </div>
-            ) : (<div className='column'>
-            <div className='Welcome'>
-              <h1 className='welcomeType'>
-                Welcome! Please login to start</h1>
+            ) : (
+            <div className='row'>
+                <div className='column'>
+                  <h1 className='welcomeTitle'>{'WELCOME TO \nCODE WIZARD'}</h1>
+                  <h1 className='welcomeType'>
+                    {'\nAre you eager to master the art of coding?\nLook no further!\nCode Wizard is a quiz app to help start\nyou off on your coding journey\nor refresh your skills as a seasoned coder.' }
+                  </h1>
+                </div>
+                
+                <img className="heroImage" src={require('../../assets/Frogboy2.png')} alt="lilGuy"></img>
+                
             </div>
-              <img className="heroImage" src={require('../../assets/Frogboy2.png')} alt="lilGuy" />
-            
-          </div>)
+          )
             }
         </div>
     );
