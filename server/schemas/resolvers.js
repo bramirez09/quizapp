@@ -39,7 +39,7 @@ const resolvers = {
         return { token, user };
       },
       deleteUser: async (parent, { username }) => {
-        const data = await User.findOneAndDelete({username:"bo123"})
+        const data = await User.findOneAndDelete({ username })
         console.log("user test data:", data);
         return data;
       },
