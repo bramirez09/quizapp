@@ -61,7 +61,7 @@ button {
     padding: 5px 0px 0px 0px;
     background-color: white;
     border: #cc333c solid 2px;
-    padding: 8px 5px 0px 5px;
+    padding: 8px 5px 5px 5px;
 }
 
 .homepageCard {
@@ -85,8 +85,12 @@ button {
 
 .welcomeType {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin: auto;
   padding: 3rem 0 0 0;
   font-size: 2rem;
 }
+
+/* .btn-primary {
+  padding: 0 0 1rem 0;
+} */

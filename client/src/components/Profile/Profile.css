@@ -1,6 +1,6 @@
 .Banner {
   margin: auto;
-  padding: 2.4rem 0 0 0;
+  padding: 50px 0 0 0;
   align-items: center;
   font-size: 4rem;
 }
@@ -8,6 +8,7 @@
 .row {
   display: flex; 
   justify-content: center;
+  padding: 4rem 0 0 0;
   height: 65vh;
   
 }
@@ -25,9 +26,15 @@
 
 .list-group.list-group-flush {
   margin: auto;
-  padding: 0;
+  padding:0;
   align-items: center;
   /* border: 1px solid; */
+}
+
+.ScoreType {
+  font-size: 2rem;
+  text-align: center;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 .list-group-item {
@@ -85,7 +92,7 @@ a {
 
 .deleteContainer {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .btn-secondary {
