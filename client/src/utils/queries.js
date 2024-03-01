@@ -7,7 +7,6 @@ export const QUERY_QUIZ = gql`
       question
       answers
       correct_answer
-      totalScore
     }
   }
 `;
@@ -18,7 +17,7 @@ export const QUERY_USER = gql `
       _id
       username
       email
-      totalScore
+      scores
     }
   }
 `
@@ -29,7 +28,7 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      totalScore
+      scores
     }
   }
 `;

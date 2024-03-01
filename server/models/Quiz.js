@@ -15,14 +15,6 @@ const quizSchema = new Schema({
   correct_answer: {
       type: String 
   },
-  totalScore: {
-    type: Number
-  }
-  // createdAt: {
-  //   type: Date,
-  //   default: Date.now,
-  //   get: (timestamp) => dateFormat(timestamp),
-  // },
 });
 
 const Quiz = model('Quiz', quizSchema);

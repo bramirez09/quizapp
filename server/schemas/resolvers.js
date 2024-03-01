@@ -16,7 +16,7 @@ const resolvers = {
         return data;
       },
       user: async (parent, { username }) => {
-        const data = await User.findOne({ username: username }).populate('totalScore');
+        const data = await User.findOne({ username: username }).populate('scores');
         console.log("user data:", data);
         return data;
       },
@@ -36,12 +36,6 @@ const resolvers = {
         const token = signToken(user);
         return { token, user };
       },
-      deleteUser: async (parent, { username }) => {
-        const data = await User.findOneAndDelete({username:"bo123"})
-        console.log("user test data:", data);
-         return data;
-      },
-  
       login: async (parent, { email, password }) => {
         const user = await User.findOne({ email });
         // check if user exists with email and credentials
@@ -57,13 +51,17 @@ const resolvers = {
         const token = signToken(user);
         return { token, user };
       },
-      updateScore: async (parent, { totalScore }) => {
-        const score = await User.findOneAndUpdate(
-          { username: username }, 
-          { $addToSet: { totalScore: totalScore }}
-          );  
-        return score;
+      addScore: async (parent, { username, scores }, context) => {
+        if (context.user) {
+          return User.findOneAndUpdate(
+            { username: username },
+            {
+              $addToSet: { scores: scores },
+            },
+          );
+        }
       },
+  
     },
   };
 

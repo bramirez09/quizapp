@@ -27,22 +27,11 @@ export const ADD_USER = gql`
     }
 `;
 
-
-export const DELETE_USER = gql`
-    mutation deleteUser($username: String!) {
-      deleteUser(username: $username) {
+export const ADD_SCORE = gql`
+    mutation addScore($username: String!, $scores: String!){
+      addScore(username: $username, scores: $scores ) {
         username
+        scores
       }
     }
-`;
-
-
-
-export const UPDATE_SCORE = gql`
-mutation updateScore($totalScore: Int!) {
-  updateScore(totalScore: $totalScore) {
-    _id
-    totalScore
-  }
-}
 `;

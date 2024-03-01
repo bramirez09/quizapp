@@ -5,7 +5,7 @@ type User {
     _id: ID!
     username: String!
     email: String!
-    totalScore: Int
+    scores: [String]
 }
 type Quiz {
     _id: ID!
@@ -28,8 +28,7 @@ type Query {
 type Mutation { 
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    updateScore(totalScore: Int!): User
-    deleteUser(username: String!): User
+    addScore(username: String!, scores: String!): Auth
   }
 `;
 
